@@ -26,11 +26,44 @@ public class VistaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblImagenLogin = new javax.swing.JLabel();
+        lblContrasena = new javax.swing.JLabel();
+        lblEmail1 = new javax.swing.JLabel();
+        txtfEmail = new javax.swing.JTextField();
+        txtfEmail1 = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
+
+        lblImagenLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagenLogin.png"))); // NOI18N
+        getContentPane().add(lblImagenLogin);
+        lblImagenLogin.setBounds(480, 0, 350, 340);
+
+        lblContrasena.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblContrasena.setText("CONTRASEÑA");
+        getContentPane().add(lblContrasena);
+        lblContrasena.setBounds(280, 430, 240, 50);
+
+        lblEmail1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblEmail1.setText("EMAIL");
+        getContentPane().add(lblEmail1);
+        lblEmail1.setBounds(280, 340, 120, 50);
+
+        txtfEmail.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        getContentPane().add(txtfEmail);
+        txtfEmail.setBounds(560, 430, 450, 50);
+
+        txtfEmail1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        getContentPane().add(txtfEmail1);
+        txtfEmail1.setBounds(440, 340, 570, 50);
+
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnLogin.setText("INICIAR SESION");
+        getContentPane().add(btnLogin);
+        btnLogin.setBounds(490, 550, 330, 80);
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(lblFondo);
@@ -76,6 +109,12 @@ public class VistaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel lblContrasena;
+    private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblImagenLogin;
+    private javax.swing.JTextField txtfEmail;
+    private javax.swing.JTextField txtfEmail1;
     // End of variables declaration//GEN-END:variables
 }
