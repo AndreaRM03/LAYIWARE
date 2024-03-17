@@ -26,15 +26,15 @@ public class VistaPlantilla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblFondo = new javax.swing.JLabel();
+        zlblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
-        getContentPane().add(lblFondo);
-        lblFondo.setBounds(0, 0, 1280, 720);
+        zlblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        getContentPane().add(zlblFondo);
+        zlblFondo.setBounds(0, 0, 1280, 720);
 
         pack();
         setLocationRelativeTo(null);
@@ -77,6 +77,6 @@ public class VistaPlantilla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel zlblFondo;
     // End of variables declaration//GEN-END:variables
 }

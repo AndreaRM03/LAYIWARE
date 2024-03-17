@@ -30,8 +30,8 @@ public class VistaLogin extends javax.swing.JFrame {
         lblContrasena = new javax.swing.JLabel();
         lblEmail1 = new javax.swing.JLabel();
         txtfEmail = new javax.swing.JTextField();
-        txtfEmail1 = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        txtpPassword = new javax.swing.JPasswordField();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,27 +43,38 @@ public class VistaLogin extends javax.swing.JFrame {
         lblImagenLogin.setBounds(480, 0, 350, 340);
 
         lblContrasena.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lblContrasena.setText("CONTRASEÑA");
+        lblContrasena.setText("Contraseña");
         getContentPane().add(lblContrasena);
         lblContrasena.setBounds(280, 430, 240, 50);
 
         lblEmail1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lblEmail1.setText("EMAIL");
+        lblEmail1.setText("Email");
         getContentPane().add(lblEmail1);
         lblEmail1.setBounds(280, 340, 120, 50);
 
         txtfEmail.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtfEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfEmailActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtfEmail);
-        txtfEmail.setBounds(560, 430, 450, 50);
-
-        txtfEmail1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        getContentPane().add(txtfEmail1);
-        txtfEmail1.setBounds(440, 340, 570, 50);
+        txtfEmail.setBounds(420, 340, 570, 50);
 
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        btnLogin.setText("INICIAR SESION");
+        btnLogin.setText("Iniciar sesión");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(490, 550, 330, 80);
+        btnLogin.setBounds(500, 550, 330, 80);
+
+        txtpPassword.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtpPassword.setText("jPasswordField1");
+        getContentPane().add(txtpPassword);
+        txtpPassword.setBounds(540, 430, 450, 50);
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(lblFondo);
@@ -72,6 +83,20 @@ public class VistaLogin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String email = txtfEmail.getText();
+        String password = String.valueOf( txtpPassword.getPassword());
+        System.out.println(email);
+        System.out.println(password);
+        VistaMenu vistaMenu = new VistaMenu();
+        vistaMenu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,6 +140,6 @@ public class VistaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblImagenLogin;
     private javax.swing.JTextField txtfEmail;
-    private javax.swing.JTextField txtfEmail1;
+    private javax.swing.JPasswordField txtpPassword;
     // End of variables declaration//GEN-END:variables
 }
