@@ -48,7 +48,7 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Admin Sucursal (Crear)");
+        setTitle("Vista Sucursales Crear");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
@@ -151,7 +151,7 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         txtfTelefono2.setBounds(640, 480, 260, 40);
 
         btnCrearSucursal.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
-        btnCrearSucursal.setText("Crear Sucursal");
+        btnCrearSucursal.setText("Crear Sucursales");
         btnCrearSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearSucursalActionPerformed(evt);

@@ -47,7 +47,7 @@ public class VistaSucursalesVer extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Admin Sucursal (Crear)");
+        setTitle("Vista Sucursales Ver");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
