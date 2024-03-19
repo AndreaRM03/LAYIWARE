@@ -44,6 +44,11 @@ public class VistaMenu extends javax.swing.JFrame {
 
         btnSucursales.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSucursales.setText("Seguros");
+        btnSucursales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSucursalesActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSucursales);
         btnSucursales.setBounds(130, 510, 370, 60);
 
@@ -64,6 +69,11 @@ public class VistaMenu extends javax.swing.JFrame {
 
         btnSucursales3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSucursales3.setText("Empleados");
+        btnSucursales3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSucursales3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSucursales3);
         btnSucursales3.setBounds(780, 330, 370, 60);
 
@@ -80,6 +90,18 @@ public class VistaMenu extends javax.swing.JFrame {
         vistaSucursales.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSucursales1ActionPerformed
+
+    private void btnSucursales3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSucursales3ActionPerformed
+        VistaEmpleados vistaEmpleados = new VistaEmpleados();
+        vistaEmpleados.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSucursales3ActionPerformed
+
+    private void btnSucursalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSucursalesActionPerformed
+        VistaSeguros vistaSeguros = new VistaSeguros();
+        vistaSeguros.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSucursalesActionPerformed
 
     /**
      * @param args the command line arguments

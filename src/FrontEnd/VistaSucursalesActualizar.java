@@ -48,7 +48,7 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Admin Sucursal (Crear)");
+        setTitle("Vista Sucursales Actualizar");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
@@ -158,7 +158,7 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnActualizarSucursal);
-        btnActualizarSucursal.setBounds(460, 570, 390, 60);
+        btnActualizarSucursal.setBounds(460, 570, 410, 60);
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Regresar.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
