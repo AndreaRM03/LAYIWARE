@@ -43,6 +43,8 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         txtfTelefono1 = new javax.swing.JTextField();
         txtfTelefono2 = new javax.swing.JTextField();
         btnActualizarSucursal = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -158,6 +160,20 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         getContentPane().add(btnActualizarSucursal);
         btnActualizarSucursal.setBounds(460, 570, 390, 60);
 
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Regresar.png"))); // NOI18N
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(1160, 30, 90, 90);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Sucursales");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(940, 80, 330, 48);
+
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, -30, 1280, 720);
@@ -226,6 +242,12 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnActualizarSucursalActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        VistaSucursales vistaSucursales = new VistaSucursales();
+        vistaSucursales.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,7 +300,9 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarSucursal;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cmbNombreSucursal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblNombreSucursal;

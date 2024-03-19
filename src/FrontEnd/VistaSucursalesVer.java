@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author red-p
  */
-public class VistaSucursalesCrear extends javax.swing.JFrame {
+public class VistaSucursalesVer extends javax.swing.JFrame {
 
     /**
      * Creates new form SucursalesVistaAdmin
      */
-    public VistaSucursalesCrear() {
+    public VistaSucursalesVer() {
         initComponents();
     }
 
@@ -42,7 +42,6 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         lblTelefono = new javax.swing.JLabel();
         txtfTelefono1 = new javax.swing.JTextField();
         txtfTelefono2 = new javax.swing.JTextField();
-        btnCrearSucursal = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
@@ -150,16 +149,6 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         getContentPane().add(txtfTelefono2);
         txtfTelefono2.setBounds(640, 480, 260, 40);
 
-        btnCrearSucursal.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
-        btnCrearSucursal.setText("Crear Sucursal");
-        btnCrearSucursal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearSucursalActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCrearSucursal);
-        btnCrearSucursal.setBounds(460, 570, 370, 60);
-
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Regresar.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,50 +187,6 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfTelefono2ActionPerformed
 
-    private void btnCrearSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearSucursalActionPerformed
-        int idSucursal = cmbNombreSucursal.getSelectedIndex();
-        String calle = txtfCalle.getText();
-        int numero = Integer.valueOf(txtfNumero.getText());
-        int cp = Integer.valueOf(txtfCP.getText());
-        String colonia = txtfColonia.getText();
-        String municipio = txtfMunicipio.getText();
-        String estado = txtfEstado.getText();
-        String pais = txtfPais.getText();
-        int telefono1 = Integer.valueOf(txtfTelefono1.getText());
-        int telefono2 = Integer.valueOf(txtfTelefono2.getText());
-        System.out.println(idSucursal);
-        System.out.println(calle);
-        System.out.println(numero);
-        System.out.println(cp);
-        System.out.println(colonia);
-        System.out.println(municipio);
-        System.out.println(estado);
-        System.out.println(pais);
-        System.out.println(telefono1);
-        System.out.println(telefono2);
-        
-        
-        
-        
-        int result = JOptionPane.showConfirmDialog(
-                new JFrame(),
-                "¿Estas seguro de crear esta sucursal?", 
-                "Aseguradora - confirmación",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE
-            );
-
-        if(result == JOptionPane.YES_OPTION){
-            System.out.println(1);
-           
-        }else if (result == JOptionPane.NO_OPTION){
-            System.out.println(2);
-           
-        }else {
-            System.out.println(3);
-        }
-    }//GEN-LAST:event_btnCrearSucursalActionPerformed
-
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         VistaSucursales vistaSucursales = new VistaSucursales();
         vistaSucursales.setVisible(true);
@@ -265,14 +210,38 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaSucursalesCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaSucursalesVer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaSucursalesCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaSucursalesVer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaSucursalesCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaSucursalesVer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaSucursalesCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaSucursalesVer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -285,13 +254,12 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaSucursalesCrear().setVisible(true);
+                new VistaSucursalesVer().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCrearSucursal;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cmbNombreSucursal;
     private javax.swing.JLabel jLabel1;
