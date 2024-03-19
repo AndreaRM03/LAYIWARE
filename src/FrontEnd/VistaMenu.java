@@ -76,7 +76,7 @@ public class VistaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSucursales1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSucursales1ActionPerformed
-        VistaSucursalesCrear vistaSucursales = new VistaSucursalesCrear();
+        VistaSucursales vistaSucursales = new VistaSucursales();
         vistaSucursales.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSucursales1ActionPerformed
