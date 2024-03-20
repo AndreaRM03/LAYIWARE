@@ -64,6 +64,11 @@ public class VistaMenu extends javax.swing.JFrame {
 
         btnSucursales2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSucursales2.setText("Asegurados");
+        btnSucursales2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSucursales2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSucursales2);
         btnSucursales2.setBounds(780, 510, 370, 60);
 
@@ -102,6 +107,12 @@ public class VistaMenu extends javax.swing.JFrame {
         vistaSeguros.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSucursalesActionPerformed
+
+    private void btnSucursales2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSucursales2ActionPerformed
+        VistaAsegurados vistaAsegurados = new VistaAsegurados();
+        vistaAsegurados.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSucursales2ActionPerformed
 
     /**
      * @param args the command line arguments
