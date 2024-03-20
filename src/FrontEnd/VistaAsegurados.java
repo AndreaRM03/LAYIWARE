@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class VistaEmpleados extends javax.swing.JFrame {
+public class VistaAsegurados extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaLogin
      */
-    public VistaEmpleados() {
+    public VistaAsegurados() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSucursales = new javax.swing.JTable();
+        tblAsegurados = new javax.swing.JTable();
         btnActualizar = new javax.swing.JButton();
         btnVer = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
@@ -40,11 +40,11 @@ public class VistaEmpleados extends javax.swing.JFrame {
         zlblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Empleados");
+        setTitle("Vista Asegurados");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        tblSucursales.setModel(new javax.swing.table.DefaultTableModel(
+        tblAsegurados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -67,7 +67,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblSucursales);
+        jScrollPane1.setViewportView(tblAsegurados);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(130, 60, 1130, 610);
@@ -109,9 +109,9 @@ public class VistaEmpleados extends javax.swing.JFrame {
         btnRegresar.setBounds(20, 540, 90, 90);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Empleados");
+        jLabel1.setText("Asegurados");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(1090, 0, 330, 48);
+        jLabel1.setBounds(1070, 0, 330, 48);
 
         btnBorrar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
         btnBorrar2.addActionListener(new java.awt.event.ActionListener() {
@@ -131,20 +131,20 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        VistaEmpleadosActualizar vistaEmpleadosActualizar = new VistaEmpleadosActualizar();
-        vistaEmpleadosActualizar.setVisible(true);
+        VistaAseguradosActualizar vistaAseguradosActualizar = new VistaAseguradosActualizar();
+        vistaAseguradosActualizar.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-        VistaEmpleadosVer vistaEmpleadosVer = new VistaEmpleadosVer();
-        vistaEmpleadosVer.setVisible(true);
+        VistaAseguradosVer vistaAseguradosVer = new VistaAseguradosVer();
+        vistaAseguradosVer.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        VistaEmpleadosCrear vistaEmpleadosCrear = new VistaEmpleadosCrear();
-        vistaEmpleadosCrear.setVisible(true);
+        VistaAseguradosCrear vistaAseguradosCrear = new VistaAseguradosCrear();
+        vistaAseguradosCrear.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCrearActionPerformed
 
@@ -157,7 +157,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private void btnBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar2ActionPerformed
         int result = JOptionPane.showConfirmDialog(
                 new JFrame(),
-                "¿Estas seguro de querer borrar este empleado?", 
+                "¿Estas seguro de querer borrar este Asegurado?", 
                 "Aseguradora",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE
@@ -189,14 +189,22 @@ public class VistaEmpleados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAsegurados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAsegurados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAsegurados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAsegurados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -209,7 +217,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaEmpleados().setVisible(true);
+                new VistaAsegurados().setVisible(true);
             }
         });
     }
@@ -222,7 +230,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnVer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblSucursales;
+    private javax.swing.JTable tblAsegurados;
     private javax.swing.JLabel zlblFondo;
     // End of variables declaration//GEN-END:variables
 }
