@@ -30,7 +30,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSucursales = new javax.swing.JTable();
+        tblEmpleados = new javax.swing.JTable();
         btnActualizar = new javax.swing.JButton();
         btnVer = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
@@ -44,19 +44,19 @@ public class VistaEmpleados extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        tblSucursales.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "idSucursal", "Nombre ", "Calle", "Número exterior", "CP", "Colonia", "Municipio", "Estado", "País", "Teléfono ext1", "Teléfono ext2"
+                "idEmpleado", "Nombre ", "Apellido paterno", "Apellido materno", "Email", "Contraseña", "Salario", "Comision", "Activo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -67,7 +67,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblSucursales);
+        jScrollPane1.setViewportView(tblEmpleados);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(130, 60, 1130, 610);
@@ -222,7 +222,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnVer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblSucursales;
+    private javax.swing.JTable tblEmpleados;
     private javax.swing.JLabel zlblFondo;
     // End of variables declaration//GEN-END:variables
 }
