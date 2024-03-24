@@ -34,7 +34,7 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         txtfNombre = new javax.swing.JTextField();
         txtfIdEmpleado = new javax.swing.JTextField();
         txtfComision = new javax.swing.JTextField();
-        btnCrearActualizar = new javax.swing.JButton();
+        btnActualizarEmpleados = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         txtfSalario = new javax.swing.JTextField();
@@ -92,15 +92,15 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         getContentPane().add(txtfComision);
         txtfComision.setBounds(700, 480, 410, 40);
 
-        btnCrearActualizar.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
-        btnCrearActualizar.setText("Actualizar Empleado");
-        btnCrearActualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarEmpleados.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
+        btnActualizarEmpleados.setText("Actualizar Empleado");
+        btnActualizarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActualizarActionPerformed(evt);
+                btnActualizarEmpleadosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCrearActualizar);
-        btnCrearActualizar.setBounds(460, 570, 410, 60);
+        getContentPane().add(btnActualizarEmpleados);
+        btnActualizarEmpleados.setBounds(460, 570, 420, 60);
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Regresar.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +208,7 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfIdEmpleadoActionPerformed
 
-    private void btnCrearActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActualizarActionPerformed
+    private void btnActualizarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpleadosActionPerformed
        String nombre = txtfNombre.getText();
        System.out.println(nombre);
        String apellidoPaterno = txtfApellidoPaterno.getText();
@@ -225,11 +225,35 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
        System.out.println(comision);
        
        
+       
+        /*
+        int idSucursal = cmbNombreSucursal.getSelectedIndex();
+        String calle = txtfNombre.getText();
+        int numero = Integer.valueOf(txtfNumero.getText());
+        int cp = Integer.valueOf(txtfIdEmpleado.getText());
+        String colonia = txtfComisión.getText();
+        String municipio = txtfMunicipio.getText();
+        String estado = txtfEstado.getText();
+        String pais = txtfPais.getText();
+        int telefono1 = Integer.valueOf(txtfTelefono1.getText());
+        int telefono2 = Integer.valueOf(txtfTelefono2.getText());
+        System.out.println(idSucursal);
+        System.out.println(calle);
+        System.out.println(numero);
+        System.out.println(cp);
+        System.out.println(colonia);
+        System.out.println(municipio);
+        System.out.println(estado);
+        System.out.println(pais);
+        System.out.println(telefono1);
+        System.out.println(telefono2);
+        */
         
         
         
         int result = JOptionPane.showConfirmDialog(
                 new JFrame(),
+                "¿Estas seguro de crear esta sucursal?", 
                 "Aseguradora - confirmación",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE
@@ -244,7 +268,7 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         }else {
             System.out.println(3);
         }
-    }//GEN-LAST:event_btnCrearActualizarActionPerformed
+    }//GEN-LAST:event_btnActualizarEmpleadosActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         VistaEmpleados vistaEmpleados = new VistaEmpleados();
@@ -331,7 +355,7 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCrearActualizar;
+    private javax.swing.JButton btnActualizarEmpleados;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel lblApellidoMaterno;
     private javax.swing.JLabel lblApellidoPaterno;

@@ -93,7 +93,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         txtfComision.setBounds(700, 480, 410, 40);
 
         btnCrearEmpleados.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
-        btnCrearEmpleados.setText("Crear Empleados");
+        btnCrearEmpleados.setText("Crear Empleado");
         btnCrearEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearEmpleadosActionPerformed(evt);
