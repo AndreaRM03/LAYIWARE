@@ -4,6 +4,8 @@
  */
 package FrontEnd;
 
+import BackEnd.Sucursal;
+import BackEnd.SucursalDAO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -16,10 +18,40 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
     /**
      * Creates new form SucursalesVistaAdmin
      */
+    private int idSucursal;
+
+    // Getters and Setters
+    public int getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(int idSucursal) {
+        this.idSucursal = idSucursal;
+    }
+    
     public VistaSucursalesActualizar() {
         initComponents();
     }
-
+    
+    
+    public VistaSucursalesActualizar(int idSucursal) {
+        this.idSucursal = idSucursal;
+        initComponents();
+        
+        SucursalDAO sucursalDAO = new SucursalDAO();
+        Sucursal sucursal = sucursalDAO.obtenerSucursalPorId(idSucursal);
+        
+        txtfIdSucursal.setText(Integer.toString(idSucursal));
+        txtfNombreSucursal.setText(sucursal.getNombreSucursal());
+        txtfCalle.setText(sucursal.getCalle());
+        txtfNumero.setText(Integer.toString(sucursal.getNumero()));
+        txtfCP.setText(Integer.toString(sucursal.getCodigoPostal()));
+        txtfColonia.setText(sucursal.getColonia());
+        txtfMunicipio.setText(sucursal.getCiudad());
+        txtfEstado.setText(sucursal.getEstado());
+        txtfPais.setText(sucursal.getPais());
+        txtfTelefono1.setText(sucursal.getTelefono());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +64,6 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         lblNombreSucursal = new javax.swing.JLabel();
         lblDireccion = new javax.swing.JLabel();
         txtfCalle = new javax.swing.JTextField();
-        cmbNombreSucursal = new javax.swing.JComboBox<>();
         txtfCP = new javax.swing.JTextField();
         txtfColonia = new javax.swing.JTextField();
         txtfNumero = new javax.swing.JTextField();
@@ -41,10 +72,12 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         txtfPais = new javax.swing.JTextField();
         lblTelefono = new javax.swing.JLabel();
         txtfTelefono1 = new javax.swing.JTextField();
-        txtfTelefono2 = new javax.swing.JTextField();
         btnActualizarSucursal = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtfNombreSucursal = new javax.swing.JTextField();
+        lblIdSucursal = new javax.swing.JLabel();
+        txtfIdSucursal = new javax.swing.JTextField();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,17 +107,6 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         });
         getContentPane().add(txtfCalle);
         txtfCalle.setBounds(340, 190, 550, 40);
-
-        cmbNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        cmbNombreSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Suc1", "Suc2", "Suc3" }));
-        cmbNombreSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
-        cmbNombreSucursal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbNombreSucursalActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cmbNombreSucursal);
-        cmbNombreSucursal.setBounds(450, 80, 140, 40);
 
         txtfCP.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfCP.setText("CP");
@@ -139,17 +161,6 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         getContentPane().add(txtfTelefono1);
         txtfTelefono1.setBounds(340, 480, 260, 40);
 
-        txtfTelefono2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfTelefono2.setText("Teléfono 2");
-        txtfTelefono2.setPreferredSize(new java.awt.Dimension(300, 100));
-        txtfTelefono2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfTelefono2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtfTelefono2);
-        txtfTelefono2.setBounds(640, 480, 260, 40);
-
         btnActualizarSucursal.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
         btnActualizarSucursal.setText("Actualizar Sucursal");
         btnActualizarSucursal.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +185,23 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(940, 80, 330, 48);
 
+        txtfNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfNombreSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(txtfNombreSucursal);
+        txtfNombreSucursal.setBounds(390, 80, 270, 40);
+
+        lblIdSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblIdSucursal.setText("Id Sucursal");
+        lblIdSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblIdSucursal);
+        lblIdSucursal.setBounds(680, 480, 130, 40);
+
+        txtfIdSucursal.setEditable(false);
+        txtfIdSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfIdSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(txtfIdSucursal);
+        txtfIdSucursal.setBounds(820, 480, 130, 40);
+
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, -30, 1280, 720);
@@ -186,39 +214,29 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfCalleActionPerformed
 
-    private void cmbNombreSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNombreSucursalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbNombreSucursalActionPerformed
-
     private void txtfCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfCPActionPerformed
 
-    private void txtfTelefono2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfTelefono2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfTelefono2ActionPerformed
-
     private void btnActualizarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarSucursalActionPerformed
-        int idSucursal = cmbNombreSucursal.getSelectedIndex();
+        String nombreSucursal = txtfNombreSucursal.getText();
         String calle = txtfCalle.getText();
         int numero = Integer.valueOf(txtfNumero.getText());
-        int cp = Integer.valueOf(txtfCP.getText());
+        int codigoPostal = Integer.valueOf(txtfCP.getText());
         String colonia = txtfColonia.getText();
         String municipio = txtfMunicipio.getText();
         String estado = txtfEstado.getText();
         String pais = txtfPais.getText();
-        int telefono1 = Integer.valueOf(txtfTelefono1.getText());
-        int telefono2 = Integer.valueOf(txtfTelefono2.getText());
-        System.out.println(idSucursal);
+        String telefono1 = txtfTelefono1.getText();
+        System.out.println(nombreSucursal);
         System.out.println(calle);
         System.out.println(numero);
-        System.out.println(cp);
+        System.out.println(codigoPostal);
         System.out.println(colonia);
         System.out.println(municipio);
         System.out.println(estado);
         System.out.println(pais);
         System.out.println(telefono1);
-        System.out.println(telefono2);
         
         
         
@@ -233,6 +251,18 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
 
         if(result == JOptionPane.YES_OPTION){
             System.out.println(1);
+            Sucursal sucursal = new Sucursal(nombreSucursal, calle, numero, codigoPostal, colonia, municipio,
+      estado, pais, telefono1);
+                
+            SucursalDAO sucursalDAO = new SucursalDAO();
+            int id = sucursalDAO.actualizarSucursal(sucursal, this.getIdSucursal());
+            
+                if (id != 0){
+                    JOptionPane.showMessageDialog(null, "Se actualizo la sucursal exitosamente", "Aseguradora", JOptionPane.INFORMATION_MESSAGE);
+                    VistaSucursales vistaSucursales = new VistaSucursales();
+                    vistaSucursales.setVisible(true);
+                    dispose();
+                }
            
         }else if (result == JOptionPane.NO_OPTION){
             System.out.println(2);
@@ -301,20 +331,21 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarSucursal;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JComboBox<String> cmbNombreSucursal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblIdSucursal;
     private javax.swing.JLabel lblNombreSucursal;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JTextField txtfCP;
     private javax.swing.JTextField txtfCalle;
     private javax.swing.JTextField txtfColonia;
     private javax.swing.JTextField txtfEstado;
+    private javax.swing.JTextField txtfIdSucursal;
     private javax.swing.JTextField txtfMunicipio;
+    private javax.swing.JTextField txtfNombreSucursal;
     private javax.swing.JTextField txtfNumero;
     private javax.swing.JTextField txtfPais;
     private javax.swing.JTextField txtfTelefono1;
-    private javax.swing.JTextField txtfTelefono2;
     // End of variables declaration//GEN-END:variables
 }

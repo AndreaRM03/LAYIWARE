@@ -42,13 +42,15 @@ public class SucursalDAO {
             statement.setString(9, sucursal.getTelefono());
 
             statement.executeUpdate();
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
+            
         }
     }
 
     // Método para actualizar una sucursal existente
-    public void actualizarSucursal(Sucursal sucursal, int idSucursal) {
+    public int actualizarSucursal(Sucursal sucursal, int idSucursal) {
         try (Connection conn = getConnection();
              PreparedStatement statement = conn.prepareStatement(UPDATE_QUERY)) {
             statement.setString(1, sucursal.getNombreSucursal());
@@ -63,8 +65,10 @@ public class SucursalDAO {
             statement.setInt(10, idSucursal);
 
             statement.executeUpdate();
+            return 1;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return 0;
         }
     }
 
