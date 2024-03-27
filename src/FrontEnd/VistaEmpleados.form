@@ -50,10 +50,10 @@
                 <Column editable="false" title="Apellido paterno" type="java.lang.String"/>
                 <Column editable="false" title="Apellido materno" type="java.lang.String"/>
                 <Column editable="false" title="Email" type="java.lang.String"/>
-                <Column editable="false" title="Contrase&#xf1;a" type="java.lang.String"/>
                 <Column editable="false" title="Salario" type="java.lang.Double"/>
                 <Column editable="false" title="Comision" type="java.lang.Double"/>
                 <Column editable="false" title="Activo" type="java.lang.Boolean"/>
+                <Column editable="false" title="idSucursal" type="java.lang.Integer"/>
               </Table>
             </Property>
           </Properties>

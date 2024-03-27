@@ -29,10 +29,9 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNombreSucursal = new javax.swing.JLabel();
+        lblidSucursal = new javax.swing.JLabel();
         lblComision = new javax.swing.JLabel();
         txtfNombre = new javax.swing.JTextField();
-        txtfIdEmpleado = new javax.swing.JTextField();
         txtfComision = new javax.swing.JTextField();
         btnCrearEmpleados = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
@@ -48,6 +47,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtpPassword = new javax.swing.JPasswordField();
+        cmbIdSucursal = new javax.swing.JComboBox<>();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,11 +55,11 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        lblNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblNombreSucursal.setText("Id Empleado");
-        lblNombreSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(lblNombreSucursal);
-        lblNombreSucursal.setBounds(190, 140, 240, 60);
+        lblidSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblidSucursal.setText("Id Sucursal");
+        lblidSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblidSucursal);
+        lblidSucursal.setBounds(190, 140, 140, 60);
 
         lblComision.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblComision.setText("Comisión");
@@ -76,16 +76,6 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         });
         getContentPane().add(txtfNombre);
         txtfNombre.setBounds(700, 190, 410, 40);
-
-        txtfIdEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfIdEmpleado.setPreferredSize(new java.awt.Dimension(300, 100));
-        txtfIdEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfIdEmpleadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtfIdEmpleado);
-        txtfIdEmpleado.setBounds(190, 190, 410, 40);
 
         txtfComision.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfComision.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -142,18 +132,18 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         lblApellidoPaterno.setText("Apellido Paterno");
         lblApellidoPaterno.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(lblApellidoPaterno);
-        lblApellidoPaterno.setBounds(190, 240, 190, 40);
+        lblApellidoPaterno.setBounds(190, 250, 190, 40);
 
         lblApellidoMaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblApellidoMaterno.setText("Apellido Materno");
         lblApellidoMaterno.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(lblApellidoMaterno);
-        lblApellidoMaterno.setBounds(700, 240, 190, 40);
+        lblApellidoMaterno.setBounds(700, 250, 190, 40);
 
         txtfApellidoMaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfApellidoMaterno);
-        txtfApellidoMaterno.setBounds(700, 280, 410, 40);
+        txtfApellidoMaterno.setBounds(700, 290, 410, 40);
 
         txtfApellidoPaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfApellidoPaterno.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -163,7 +153,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfApellidoPaterno);
-        txtfApellidoPaterno.setBounds(190, 280, 410, 40);
+        txtfApellidoPaterno.setBounds(190, 290, 410, 40);
 
         txtfEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfEmail.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -192,6 +182,11 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         getContentPane().add(txtpPassword);
         txtpPassword.setBounds(700, 380, 410, 40);
 
+        cmbIdSucursal.setEditable(true);
+        cmbIdSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        getContentPane().add(cmbIdSucursal);
+        cmbIdSucursal.setBounds(190, 190, 410, 40);
+
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 1280, 720);
@@ -203,10 +198,6 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
     private void txtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfNombreActionPerformed
-
-    private void txtfIdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfIdEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfIdEmpleadoActionPerformed
 
     private void btnCrearEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEmpleadosActionPerformed
        String nombre = txtfNombre.getText();
@@ -341,21 +332,21 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearEmpleados;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox<String> cmbIdSucursal;
     private javax.swing.JLabel lblApellidoMaterno;
     private javax.swing.JLabel lblApellidoPaterno;
     private javax.swing.JLabel lblComision;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblNombreSucursal;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSalario;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblidSucursal;
     private javax.swing.JTextField txtfApellidoMaterno;
     private javax.swing.JTextField txtfApellidoPaterno;
     private javax.swing.JTextField txtfComision;
     private javax.swing.JTextField txtfEmail;
-    private javax.swing.JTextField txtfIdEmpleado;
     private javax.swing.JTextField txtfNombre;
     private javax.swing.JTextField txtfSalario;
     private javax.swing.JPasswordField txtpPassword;

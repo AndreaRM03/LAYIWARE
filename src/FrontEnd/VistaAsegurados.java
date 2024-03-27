@@ -49,14 +49,14 @@ public class VistaAsegurados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idSucursal", "Nombre ", "Calle", "Número exterior", "CP", "Colonia", "Municipio", "Estado", "País", "Teléfono ext1", "Teléfono ext2"
+                "idAsegurado", "idSucursal", "Nombre ", "Apellido Paterno", "Apellido Materno", "RFC", "CURP", "Telefono"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

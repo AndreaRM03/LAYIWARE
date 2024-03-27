@@ -49,11 +49,11 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idEmpleado", "Nombre ", "Apellido paterno", "Apellido materno", "Email", "Contraseña", "Salario", "Comision", "Activo"
+                "idEmpleado", "Nombre ", "Apellido paterno", "Apellido materno", "Email", "Salario", "Comision", "Activo", "idSucursal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Boolean.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 true, false, false, false, false, false, false, false, false

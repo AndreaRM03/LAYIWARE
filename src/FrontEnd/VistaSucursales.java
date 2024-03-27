@@ -77,7 +77,7 @@ public class VistaSucursales extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idSucursal", "Nombre ", "Calle", "Número exterior", "CP", "Colonia", "Municipio", "Estado", "País", "Teléfono ext1"
+                "idSucursal", "Nombre ", "Calle", "Número exterior", "CP", "Colonia", "Municipio", "Estado", "País", "Teléfono"
             }
         ) {
             Class[] types = new Class [] {
