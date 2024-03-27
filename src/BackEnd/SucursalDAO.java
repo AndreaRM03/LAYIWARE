@@ -73,13 +73,15 @@ public class SucursalDAO {
     }
 
     // Método para eliminar una sucursal
-    public void borrarSucursal(int idSucursal) {
+    public int borrarSucursal(int idSucursal) {
         try (Connection conn = getConnection();
              PreparedStatement statement = conn.prepareStatement(DELETE_QUERY)) {
             statement.setInt(1, idSucursal);
             statement.executeUpdate();
+            return 1;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return 0;
         }
     }
 

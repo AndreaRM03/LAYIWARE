@@ -64,7 +64,7 @@ public class VistaSucursales extends javax.swing.JFrame {
         btnCrear = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnBorrar2 = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
         zlblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -141,14 +141,14 @@ public class VistaSucursales extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(1090, 0, 330, 48);
 
-        btnBorrar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
-        btnBorrar2.addActionListener(new java.awt.event.ActionListener() {
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBorrar2ActionPerformed(evt);
+                btnBorrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBorrar2);
-        btnBorrar2.setBounds(20, 420, 90, 90);
+        getContentPane().add(btnBorrar);
+        btnBorrar.setBounds(20, 420, 90, 90);
 
         zlblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(zlblFondo);
@@ -201,8 +201,14 @@ public class VistaSucursales extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void btnBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar2ActionPerformed
-        int result = JOptionPane.showConfirmDialog(
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int selectedRow = tblSucursales.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idSucursal = (int) tblSucursales.getValueAt(selectedRow, 0);
+            System.out.println(idSucursal);
+            
+            int result = JOptionPane.showConfirmDialog(
                 new JFrame(),
                 "¿Estas seguro de querer borrar esta sucursal?", 
                 "Aseguradora",
@@ -212,12 +218,27 @@ public class VistaSucursales extends javax.swing.JFrame {
 
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
+                SucursalDAO sucursalDAO = new SucursalDAO();
+                int id = sucursalDAO.borrarSucursal(idSucursal);
+                if(id != 0){
+                    JOptionPane.showMessageDialog(null, "La sucursal fue eliminada exitosamente.", "Aseguradora", JOptionPane.INFORMATION_MESSAGE);
+                    VistaSucursales vistaSucursales = new VistaSucursales();
+                    vistaSucursales.setVisible(true);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "La sucursal no se pudo eliminar.", "Aseguradora", JOptionPane.ERROR_MESSAGE);
+                }
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
             }else {
                 System.out.println(3);
-            }
-    }//GEN-LAST:event_btnBorrar2ActionPerformed
+            } 
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona una sucursal");
+        }
+        
+        
+    }//GEN-LAST:event_btnBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,7 +280,7 @@ public class VistaSucursales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnBorrar2;
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnVer;
