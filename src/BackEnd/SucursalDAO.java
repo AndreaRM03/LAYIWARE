@@ -16,11 +16,11 @@ public class SucursalDAO {
     private static final String PASSWORD = "toor";
 
     // Consultas SQL
-    private static final String INSERT_QUERY = "INSERT INTO sucursal (nombre_sucursal, calle, numero, codigo_postal, colonia, ciudad, estado, pais, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_QUERY = "UPDATE sucursal SET nombre_sucursal=?, calle=?, numero=?, codigo_postal=?, colonia=?, ciudad=?, estado=?, pais=?, telefono=? WHERE id_sucursal=?";
-    private static final String DELETE_QUERY = "DELETE FROM sucursal WHERE id_sucursal=?";
-    private static final String SELECT_QUERY = "SELECT * FROM sucursal";
-    private static final String SELECT_BY_ID_QUERY = "SELECT * FROM sucursal WHERE id_sucursal=?";
+    private static final String INSERT_QUERY = "INSERT INTO sucursales (nombre_sucursal, calle, numero, codigo_postal, colonia, ciudad, estado, pais, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_QUERY = "UPDATE sucursales SET nombre_sucursal=?, calle=?, numero=?, codigo_postal=?, colonia=?, ciudad=?, estado=?, pais=?, telefono=? WHERE id_sucursal=?";
+    private static final String DELETE_QUERY = "DELETE FROM sucursales WHERE id_sucursal=?";
+    private static final String SELECT_QUERY = "SELECT * FROM sucursales";
+    private static final String SELECT_BY_ID_QUERY = "SELECT * FROM sucursales WHERE id_sucursal=?";
 
     // Método para establecer conexión con la base de datos
     private Connection getConnection() throws SQLException {

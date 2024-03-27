@@ -44,18 +44,15 @@
         <Component class="javax.swing.JTable" name="tblSucursales">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="11" rowCount="0">
-                <Column editable="true" title="idSucursal" type="java.lang.Integer"/>
-                <Column editable="false" title="Nombre " type="java.lang.String"/>
-                <Column editable="false" title="Calle" type="java.lang.String"/>
-                <Column editable="false" title="N&#xfa;mero exterior" type="java.lang.Integer"/>
-                <Column editable="false" title="CP" type="java.lang.Integer"/>
-                <Column editable="false" title="Colonia" type="java.lang.String"/>
-                <Column editable="false" title="Municipio" type="java.lang.String"/>
-                <Column editable="false" title="Estado" type="java.lang.String"/>
-                <Column editable="false" title="Pa&#xed;s" type="java.lang.String"/>
-                <Column editable="false" title="Tel&#xe9;fono ext1" type="java.lang.String"/>
-                <Column editable="false" title="Tel&#xe9;fono ext2" type="java.lang.String"/>
+              <Table columnCount="8" rowCount="0">
+                <Column editable="true" title="idSeguro" type="java.lang.Integer"/>
+                <Column editable="false" title="idAsegurado" type="java.lang.Integer"/>
+                <Column editable="false" title="Cantidad asegurada" type="java.lang.Double"/>
+                <Column editable="false" title="Folio" type="java.lang.String"/>
+                <Column editable="false" title="Vigencia" type="java.lang.String"/>
+                <Column editable="false" title="Fecha recepcion" type="java.lang.String"/>
+                <Column editable="false" title="Telefono" type="java.lang.String"/>
+                <Column editable="false" title="Tipo de seguro" type="java.lang.String"/>
               </Table>
             </Property>
           </Properties>

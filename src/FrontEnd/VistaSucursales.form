@@ -54,7 +54,7 @@
                 <Column editable="false" title="Municipio" type="java.lang.String"/>
                 <Column editable="false" title="Estado" type="java.lang.String"/>
                 <Column editable="false" title="Pa&#xed;s" type="java.lang.String"/>
-                <Column editable="false" title="Tel&#xe9;fono ext1" type="java.lang.String"/>
+                <Column editable="false" title="Tel&#xe9;fono" type="java.lang.String"/>
               </Table>
             </Property>
           </Properties>

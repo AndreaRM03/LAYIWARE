@@ -85,6 +85,7 @@ public class VistaSucursalesVer extends javax.swing.JFrame {
         getContentPane().add(lblIdSucursal);
         lblIdSucursal.setBounds(680, 480, 130, 40);
 
+        txtfCalle.setEditable(false);
         txtfCalle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfCalle.setText("Calle:");
         txtfCalle.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -96,6 +97,7 @@ public class VistaSucursalesVer extends javax.swing.JFrame {
         getContentPane().add(txtfCalle);
         txtfCalle.setBounds(340, 190, 550, 40);
 
+        txtfCP.setEditable(false);
         txtfCP.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfCP.setText("CP");
         txtfCP.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -107,30 +109,35 @@ public class VistaSucursalesVer extends javax.swing.JFrame {
         getContentPane().add(txtfCP);
         txtfCP.setBounds(340, 270, 260, 40);
 
+        txtfColonia.setEditable(false);
         txtfColonia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfColonia.setText("Colonia");
         txtfColonia.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfColonia);
         txtfColonia.setBounds(640, 270, 460, 40);
 
+        txtfNumero.setEditable(false);
         txtfNumero.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfNumero.setText("No.");
         txtfNumero.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfNumero);
         txtfNumero.setBounds(930, 190, 160, 40);
 
+        txtfMunicipio.setEditable(false);
         txtfMunicipio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfMunicipio.setText("Municipio");
         txtfMunicipio.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfMunicipio);
         txtfMunicipio.setBounds(340, 370, 260, 40);
 
+        txtfEstado.setEditable(false);
         txtfEstado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfEstado.setText("Estado");
         txtfEstado.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfEstado);
         txtfEstado.setBounds(640, 370, 220, 40);
 
+        txtfPais.setEditable(false);
         txtfPais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfPais.setText("País");
         txtfPais.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -143,6 +150,7 @@ public class VistaSucursalesVer extends javax.swing.JFrame {
         getContentPane().add(lblTelefono);
         lblTelefono.setBounds(190, 480, 120, 40);
 
+        txtfTelefono1.setEditable(false);
         txtfTelefono1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfTelefono1.setText("Teléfono 1");
         txtfTelefono1.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -169,11 +177,13 @@ public class VistaSucursalesVer extends javax.swing.JFrame {
         getContentPane().add(lblDireccion);
         lblDireccion.setBounds(190, 190, 130, 40);
 
+        txtfIdSucursal.setEditable(false);
         txtfIdSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfIdSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfIdSucursal);
         txtfIdSucursal.setBounds(820, 480, 130, 40);
 
+        txtfNombreSucursal.setEditable(false);
         txtfNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfNombreSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfNombreSucursal);

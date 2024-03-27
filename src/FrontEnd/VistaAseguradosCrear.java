@@ -29,20 +29,15 @@ public class VistaAseguradosCrear extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNombreSucursal = new javax.swing.JLabel();
-        lblDireccion = new javax.swing.JLabel();
-        txtfCalle = new javax.swing.JTextField();
-        cmbNombreSucursal = new javax.swing.JComboBox<>();
-        txtfCP = new javax.swing.JTextField();
-        txtfColonia = new javax.swing.JTextField();
-        txtfNumero = new javax.swing.JTextField();
-        txtfMunicipio = new javax.swing.JTextField();
-        txtfEstado = new javax.swing.JTextField();
-        txtfPais = new javax.swing.JTextField();
-        lblTelefono = new javax.swing.JLabel();
-        txtfTelefono1 = new javax.swing.JTextField();
-        txtfTelefono2 = new javax.swing.JTextField();
-        btnCrearSucursal = new javax.swing.JButton();
+        lblIdSucursal = new javax.swing.JLabel();
+        txtfNombre = new javax.swing.JTextField();
+        cmbIdSucursal = new javax.swing.JComboBox<>();
+        txtfApellidoMaterno = new javax.swing.JTextField();
+        txtfRFC = new javax.swing.JTextField();
+        txtfApellidoPaterno = new javax.swing.JTextField();
+        txtfCURP = new javax.swing.JTextField();
+        txtfTelefono = new javax.swing.JTextField();
+        btnCrearAsegurado = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
@@ -52,113 +47,78 @@ public class VistaAseguradosCrear extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        lblNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblNombreSucursal.setText("Nombre Sucursal");
-        lblNombreSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(lblNombreSucursal);
-        lblNombreSucursal.setBounds(190, 70, 240, 60);
+        lblIdSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblIdSucursal.setText("Id Sucursal");
+        lblIdSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblIdSucursal);
+        lblIdSucursal.setBounds(340, 190, 140, 60);
 
-        lblDireccion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblDireccion.setText("Dirección");
-        lblDireccion.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(lblDireccion);
-        lblDireccion.setBounds(190, 190, 130, 40);
-
-        txtfCalle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfCalle.setText("Calle:");
-        txtfCalle.setPreferredSize(new java.awt.Dimension(300, 100));
-        txtfCalle.addActionListener(new java.awt.event.ActionListener() {
+        txtfNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfNombre.setText("Nombre");
+        txtfNombre.setPreferredSize(new java.awt.Dimension(300, 100));
+        txtfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfCalleActionPerformed(evt);
+                txtfNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(txtfCalle);
-        txtfCalle.setBounds(340, 190, 550, 40);
+        getContentPane().add(txtfNombre);
+        txtfNombre.setBounds(340, 290, 360, 40);
 
-        cmbNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        cmbNombreSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Suc1", "Suc2", "Suc3" }));
-        cmbNombreSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
-        cmbNombreSucursal.addActionListener(new java.awt.event.ActionListener() {
+        cmbIdSucursal.setEditable(true);
+        cmbIdSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cmbIdSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
+        cmbIdSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbNombreSucursalActionPerformed(evt);
+                cmbIdSucursalActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbNombreSucursal);
-        cmbNombreSucursal.setBounds(450, 80, 140, 40);
+        getContentPane().add(cmbIdSucursal);
+        cmbIdSucursal.setBounds(490, 200, 210, 40);
 
-        txtfCP.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfCP.setText("CP");
-        txtfCP.setPreferredSize(new java.awt.Dimension(300, 100));
-        txtfCP.addActionListener(new java.awt.event.ActionListener() {
+        txtfApellidoMaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfApellidoMaterno.setText("Apellido materno");
+        txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(300, 100));
+        txtfApellidoMaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfCPActionPerformed(evt);
+                txtfApellidoMaternoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtfCP);
-        txtfCP.setBounds(340, 270, 260, 40);
+        getContentPane().add(txtfApellidoMaterno);
+        txtfApellidoMaterno.setBounds(340, 380, 360, 40);
 
-        txtfColonia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfColonia.setText("Colonia");
-        txtfColonia.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(txtfColonia);
-        txtfColonia.setBounds(640, 270, 460, 40);
+        txtfRFC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfRFC.setText("RFC");
+        txtfRFC.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(txtfRFC);
+        txtfRFC.setBounds(740, 380, 360, 40);
 
-        txtfNumero.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfNumero.setText("No.");
-        txtfNumero.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(txtfNumero);
-        txtfNumero.setBounds(940, 190, 160, 40);
+        txtfApellidoPaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfApellidoPaterno.setText("Apellido paterno");
+        txtfApellidoPaterno.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(txtfApellidoPaterno);
+        txtfApellidoPaterno.setBounds(740, 290, 360, 40);
 
-        txtfMunicipio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfMunicipio.setText("Municipio");
-        txtfMunicipio.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(txtfMunicipio);
-        txtfMunicipio.setBounds(340, 370, 260, 40);
+        txtfCURP.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfCURP.setText("CURP");
+        txtfCURP.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(txtfCURP);
+        txtfCURP.setBounds(340, 470, 360, 40);
 
-        txtfEstado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfEstado.setText("Estado");
-        txtfEstado.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(txtfEstado);
-        txtfEstado.setBounds(640, 370, 220, 40);
+        txtfTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfTelefono.setText("Teléfono");
+        txtfTelefono.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(txtfTelefono);
+        txtfTelefono.setBounds(740, 470, 360, 40);
 
-        txtfPais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfPais.setText("País");
-        txtfPais.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(txtfPais);
-        txtfPais.setBounds(900, 370, 200, 40);
-
-        lblTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTelefono.setText("Teléfonos");
-        lblTelefono.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(lblTelefono);
-        lblTelefono.setBounds(190, 480, 120, 40);
-
-        txtfTelefono1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfTelefono1.setText("Teléfono 1");
-        txtfTelefono1.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(txtfTelefono1);
-        txtfTelefono1.setBounds(340, 480, 260, 40);
-
-        txtfTelefono2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfTelefono2.setText("Teléfono 2");
-        txtfTelefono2.setPreferredSize(new java.awt.Dimension(300, 100));
-        txtfTelefono2.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearAsegurado.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
+        btnCrearAsegurado.setText("Crear Asegurado");
+        btnCrearAsegurado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfTelefono2ActionPerformed(evt);
+                btnCrearAseguradoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtfTelefono2);
-        txtfTelefono2.setBounds(640, 480, 260, 40);
-
-        btnCrearSucursal.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
-        btnCrearSucursal.setText("Crear Asegurado");
-        btnCrearSucursal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearSucursalActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCrearSucursal);
-        btnCrearSucursal.setBounds(460, 570, 370, 60);
+        getContentPane().add(btnCrearAsegurado);
+        btnCrearAsegurado.setBounds(520, 560, 370, 60);
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Regresar.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -182,45 +142,34 @@ public class VistaAseguradosCrear extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtfCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCalleActionPerformed
+    private void txtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfCalleActionPerformed
+    }//GEN-LAST:event_txtfNombreActionPerformed
 
-    private void cmbNombreSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNombreSucursalActionPerformed
+    private void cmbIdSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbIdSucursalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbNombreSucursalActionPerformed
+    }//GEN-LAST:event_cmbIdSucursalActionPerformed
 
-    private void txtfCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCPActionPerformed
+    private void txtfApellidoMaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfApellidoMaternoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfCPActionPerformed
+    }//GEN-LAST:event_txtfApellidoMaternoActionPerformed
 
-    private void txtfTelefono2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfTelefono2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfTelefono2ActionPerformed
-
-    private void btnCrearSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearSucursalActionPerformed
-        int idSucursal = cmbNombreSucursal.getSelectedIndex();
-        String calle = txtfCalle.getText();
-        int numero = Integer.valueOf(txtfNumero.getText());
-        int cp = Integer.valueOf(txtfCP.getText());
-        String colonia = txtfColonia.getText();
-        String municipio = txtfMunicipio.getText();
-        String estado = txtfEstado.getText();
-        String pais = txtfPais.getText();
-        int telefono1 = Integer.valueOf(txtfTelefono1.getText());
-        int telefono2 = Integer.valueOf(txtfTelefono2.getText());
+    private void btnCrearAseguradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAseguradoActionPerformed
+        int idSucursal = cmbIdSucursal.getSelectedIndex();
+        String nombre = txtfNombre.getText();
+        String apellidoPaterno = txtfApellidoPaterno.getText();
+        String apellidoMaterno = txtfApellidoMaterno.getText();
+        String rfc = txtfRFC.getText();
+        String curp = txtfCURP.getText();
+        String telefono = txtfTelefono.getText();
+        
         System.out.println(idSucursal);
-        System.out.println(calle);
-        System.out.println(numero);
-        System.out.println(cp);
-        System.out.println(colonia);
-        System.out.println(municipio);
-        System.out.println(estado);
-        System.out.println(pais);
-        System.out.println(telefono1);
-        System.out.println(telefono2);
-        
-        
+        System.out.println(nombre);
+        System.out.println(apellidoPaterno);
+        System.out.println(apellidoMaterno);
+        System.out.println(rfc);
+        System.out.println(curp);
+        System.out.println(telefono);
         
         
         int result = JOptionPane.showConfirmDialog(
@@ -240,7 +189,7 @@ public class VistaAseguradosCrear extends javax.swing.JFrame {
         }else {
             System.out.println(3);
         }
-    }//GEN-LAST:event_btnCrearSucursalActionPerformed
+    }//GEN-LAST:event_btnCrearAseguradoActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         VistaAsegurados vistaAsegurados = new VistaAsegurados();
@@ -299,22 +248,17 @@ public class VistaAseguradosCrear extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCrearSucursal;
+    private javax.swing.JButton btnCrearAsegurado;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JComboBox<String> cmbNombreSucursal;
+    private javax.swing.JComboBox<String> cmbIdSucursal;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblFondo;
-    private javax.swing.JLabel lblNombreSucursal;
-    private javax.swing.JLabel lblTelefono;
-    private javax.swing.JTextField txtfCP;
-    private javax.swing.JTextField txtfCalle;
-    private javax.swing.JTextField txtfColonia;
-    private javax.swing.JTextField txtfEstado;
-    private javax.swing.JTextField txtfMunicipio;
-    private javax.swing.JTextField txtfNumero;
-    private javax.swing.JTextField txtfPais;
-    private javax.swing.JTextField txtfTelefono1;
-    private javax.swing.JTextField txtfTelefono2;
+    private javax.swing.JLabel lblIdSucursal;
+    private javax.swing.JTextField txtfApellidoMaterno;
+    private javax.swing.JTextField txtfApellidoPaterno;
+    private javax.swing.JTextField txtfCURP;
+    private javax.swing.JTextField txtfNombre;
+    private javax.swing.JTextField txtfRFC;
+    private javax.swing.JTextField txtfTelefono;
     // End of variables declaration//GEN-END:variables
 }

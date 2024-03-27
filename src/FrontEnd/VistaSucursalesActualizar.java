@@ -6,8 +6,17 @@ package FrontEnd;
 
 import BackEnd.Sucursal;
 import BackEnd.SucursalDAO;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -51,6 +60,33 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         txtfEstado.setText(sucursal.getEstado());
         txtfPais.setText(sucursal.getPais());
         txtfTelefono1.setText(sucursal.getTelefono());
+        
+        List<JTextField> campos;
+        campos = new ArrayList<>();
+        
+        campos.add(txtfNombreSucursal);
+        campos.add(txtfCalle);
+        campos.add(txtfNumero);
+        campos.add(txtfCP);
+        campos.add(txtfColonia);
+        campos.add(txtfMunicipio);
+        campos.add(txtfEstado);
+        campos.add(txtfPais);
+        campos.add(txtfTelefono1);
+
+        // Agregar oyente de foco a cada JTextField
+        for (JTextField campo : campos) {
+            campo.addFocusListener(new FocusAdapter() {
+                @Override
+                public void focusLost(FocusEvent e) {
+                    validarCampoVacio(campo, false, false);
+                }
+                @Override
+                public void focusGained(FocusEvent e) {
+                    campo.setForeground(Color.BLACK);
+                }
+            });
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -137,14 +173,16 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         getContentPane().add(txtfMunicipio);
         txtfMunicipio.setBounds(340, 370, 260, 40);
 
+        txtfEstado.setEditable(false);
         txtfEstado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfEstado.setText("Estado");
+        txtfEstado.setText("Jalisco");
         txtfEstado.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfEstado);
         txtfEstado.setBounds(640, 370, 220, 40);
 
+        txtfPais.setEditable(false);
         txtfPais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfPais.setText("País");
+        txtfPais.setText("México");
         txtfPais.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfPais);
         txtfPais.setBounds(900, 370, 200, 40);
@@ -218,7 +256,83 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfCPActionPerformed
 
+    public boolean validarCampoVacio(JTextField campo, boolean esFecha, boolean esNumerico) {
+        boolean valido = false;
+        String FORMATO_FECHA = "\\d{4}-\\d{2}-\\d{2}";
+        
+        String textoCampo = campo.getText().trim();
+        if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
+            campo.setForeground(Color.RED);
+            campo.setText("El campo es obligatorio");
+            valido = false;
+        }
+        else{
+            campo.setForeground(Color.BLACK);
+            valido = true;
+            campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+        }
+        
+        // Si el campo es una fecha
+        if(esFecha){
+            Pattern pattern = Pattern.compile(FORMATO_FECHA);
+            Matcher matcher = pattern.matcher(textoCampo);
+           
+            String regex = "^(20[1-9][5-9]|[2-9][0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]|(0[1-9]|1\\d|2[0-8]))|((20[1-9][5-9]|[2-9][0-9]{3})(0[48]|[2468][048]|[13579][26])-02-29|((20[1-9][5-9]|[2-9][0-9]{3})-02-(0[1-9]|1\\d|2[0-8])))$";
+            
+            // Si no es un formato de fecha pone el borde en rojo
+            if(!matcher.matches()){
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }else{
+                
+                // Si es un formato de fecha valido, validara si la fecha es una fecha valida
+                if(Pattern.matches(regex, textoCampo)){
+                   campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                   valido = true;
+                }else{
+                    campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    valido = false;
+                }
+                
+            }
+        }
+        
+        // Si el campo debe ser numerico
+        if(esNumerico){
+            try {
+                Double.parseDouble(textoCampo);
+                // Si la conversión es exitosa, el contenido es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                valido = true;
+            } catch (NumberFormatException ex) {
+                // Si ocurre una excepción, el contenido no es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }
+        }
+        return valido;
+    }
+    
+    
     private void btnActualizarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarSucursalActionPerformed
+        
+        if(
+            validarCampoVacio(txtfNombreSucursal, false, false) &&
+            validarCampoVacio(txtfCalle, false, false) &&
+            validarCampoVacio(txtfNumero, false, true) &&
+            validarCampoVacio(txtfCP, false, true) &&
+            validarCampoVacio(txtfColonia, false, false) &&
+            validarCampoVacio(txtfMunicipio, false, false) &&
+            validarCampoVacio(txtfEstado, false, false) &&
+            validarCampoVacio(txtfPais, false, false) &&
+            validarCampoVacio(txtfTelefono1, false, true) 
+        ){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifica los campos", "Aseguradora", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Verifica los campos");
+        }
+        
         String nombreSucursal = txtfNombreSucursal.getText();
         String calle = txtfCalle.getText();
         int numero = Integer.valueOf(txtfNumero.getText());
@@ -239,8 +353,6 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
         System.out.println(telefono1);
         
         
-        
-        
         int result = JOptionPane.showConfirmDialog(
                 new JFrame(),
                 "¿Estas seguro de actualizar esta sucursal?", 
@@ -251,8 +363,7 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
 
         if(result == JOptionPane.YES_OPTION){
             System.out.println(1);
-            Sucursal sucursal = new Sucursal(nombreSucursal, calle, numero, codigoPostal, colonia, municipio,
-      estado, pais, telefono1);
+            Sucursal sucursal = new Sucursal(nombreSucursal, calle, numero, codigoPostal, colonia, municipio, estado, pais, telefono1);
                 
             SucursalDAO sucursalDAO = new SucursalDAO();
             int id = sucursalDAO.actualizarSucursal(sucursal, this.getIdSucursal());
