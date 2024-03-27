@@ -4,8 +4,12 @@
  */
 package FrontEnd;
 
+import BackEnd.Sucursal;
+import BackEnd.SucursalDAO;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +22,30 @@ public class VistaSucursales extends javax.swing.JFrame {
      */
     public VistaSucursales() {
         initComponents();
+        
+        
+            DefaultTableModel model = (DefaultTableModel) tblSucursales.getModel();
+            
+            SucursalDAO sucursalDAO = new SucursalDAO();
+            
+            // Obtener todos los productos
+            List<Sucursal> sucursales = sucursalDAO.obtenerSucursales();
+            System.out.println("Todas las sucursales:");
+            for (Sucursal sucursal : sucursales) {
+                
+                model.addRow(new Object[]{
+                    sucursal.getIdSucursal(),
+                    sucursal.getNombreSucursal(),
+                    sucursal.getCalle(),
+                    sucursal.getNumero(),
+                    sucursal.getCodigoPostal(),
+                    sucursal.getColonia(),
+                    sucursal.getCiudad(),
+                    sucursal.getEstado(),
+                    sucursal.getPais(),
+                    sucursal.getTelefono()
+                });
+            }
     }
 
     /**
@@ -49,14 +77,14 @@ public class VistaSucursales extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idSucursal", "Nombre ", "Calle", "Número exterior", "CP", "Colonia", "Municipio", "Estado", "País", "Teléfono ext1", "Teléfono ext2"
+                "idSucursal", "Nombre ", "Calle", "Número exterior", "CP", "Colonia", "Municipio", "Estado", "País", "Teléfono ext1"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -131,15 +159,34 @@ public class VistaSucursales extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        VistaSucursalesActualizar vistaSucursalesActualizar = new VistaSucursalesActualizar();
-        vistaSucursalesActualizar.setVisible(true);
-        dispose();
+        int selectedRow = tblSucursales.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idSucursal = (int) tblSucursales.getValueAt(selectedRow, 0);
+            System.out.println(idSucursal);
+            VistaSucursalesActualizar vistaSucursalesActualizar = new VistaSucursalesActualizar(idSucursal);
+            vistaSucursalesActualizar.setVisible(true);
+            dispose();
+            
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona una sucursal");
+        }
+        
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-        VistaSucursalesVer vistaSucursalesVer = new VistaSucursalesVer();
-        vistaSucursalesVer.setVisible(true);
-        dispose();
+       int selectedRow = tblSucursales.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idSucursal = (int) tblSucursales.getValueAt(selectedRow, 0);
+            System.out.println(idSucursal);
+            VistaSucursalesVer vistaSucursalesVer = new VistaSucursalesVer(idSucursal);
+            vistaSucursalesVer.setVisible(true);
+            dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona una sucursal");
+        }
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed

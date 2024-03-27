@@ -221,7 +221,9 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
                 sucursalDAO.insertarSucursal(sucursal);
                 System.out.println("La sucursal fue creada exitosamente.");
                 JOptionPane.showMessageDialog(null, "La sucursal fue creada exitosamente.", "Aseguradora", JOptionPane.INFORMATION_MESSAGE);
-
+                VistaSucursales vistaSucursales = new VistaSucursales();
+                vistaSucursales.setVisible(true);
+                dispose();
 
             } catch (Exception e) {
                 e.printStackTrace();
