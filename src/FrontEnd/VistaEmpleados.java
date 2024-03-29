@@ -163,9 +163,17 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        VistaEmpleadosActualizar vistaEmpleadosActualizar = new VistaEmpleadosActualizar();
-        vistaEmpleadosActualizar.setVisible(true);
-        dispose();
+        int selectedRow = tblEmpleados.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idEmpleado = (int) tblEmpleados.getValueAt(selectedRow, 0);
+            System.out.println(idEmpleado);
+            VistaEmpleadosActualizar vistaEmpleadosActualizar = new VistaEmpleadosActualizar(idEmpleado);
+            vistaEmpleadosActualizar.setVisible(true);
+            dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona una sucursal");
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
@@ -197,7 +205,14 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar2ActionPerformed
-        int result = JOptionPane.showConfirmDialog(
+        
+        int selectedRow = tblEmpleados.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idEmpleado = (int) tblEmpleados.getValueAt(selectedRow, 0);
+            System.out.println(idEmpleado);
+            
+            int result = JOptionPane.showConfirmDialog(
                 new JFrame(),
                 "¿Estas seguro de querer borrar este empleado?", 
                 "Aseguradora",
@@ -207,11 +222,26 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
+                EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+                int id = empleadoDAO.borrarEmpleado(idEmpleado);
+                if(id != 0){
+                    JOptionPane.showMessageDialog(null, "El empleado fue eliminado exitosamente.", "Aseguradora", JOptionPane.INFORMATION_MESSAGE);
+                    VistaEmpleados vistaEmpleados = new VistaEmpleados();
+                    vistaEmpleados.setVisible(true);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "El empleado no se pudo eliminar.", "Aseguradora", JOptionPane.ERROR_MESSAGE);
+                }
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
             }else {
                 System.out.println(3);
-            }
+            } 
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un empleado");
+        }
+        
+        
     }//GEN-LAST:event_btnBorrar2ActionPerformed
 
     /**
