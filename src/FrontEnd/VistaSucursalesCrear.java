@@ -293,8 +293,8 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
             validarCampoVacio(txtfCP, false, true) &&
             validarCampoVacio(txtfColonia, false, false) &&
             validarCampoVacio(txtfMunicipio, false, false) &&
-            validarCampoVacio(txtfEstado, false, false) &&
-            validarCampoVacio(txtfPais, false, false) &&
+            //validarCampoVacio(txtfEstado, false, false) &&
+            //validarCampoVacio(txtfPais, false, false) &&
             validarCampoVacio(txtfTelefono1, false, true) 
         ){
             
