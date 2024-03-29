@@ -4,8 +4,14 @@
  */
 package FrontEnd;
 
+import BackEnd.Empleado;
+import BackEnd.EmpleadoDAO;
+import BackEnd.Sucursal;
+import BackEnd.SucursalDAO;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +24,29 @@ public class VistaEmpleados extends javax.swing.JFrame {
      */
     public VistaEmpleados() {
         initComponents();
+        
+        DefaultTableModel model = (DefaultTableModel) tblEmpleados.getModel();
+            
+            EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+            
+            // Obtener todos los productos
+            List<Empleado> empleados = empleadoDAO.obtenerEmpleados();
+            
+            System.out.println("Todos los empleados:");
+            for (Empleado empleado : empleados) {
+                
+                model.addRow(new Object[]{
+                    empleado.getIdEmpleado(),
+                    empleado.getNombre(),
+                    empleado.getApellidoPaterno(),
+                    empleado.getApellidoMaterno(),
+                    empleado.getEmail(),
+                    empleado.getSalario(),
+                    empleado.isActivo(),
+                    empleado.getIdSucursal()
+
+                });
+            }
     }
 
     /**
@@ -49,14 +78,14 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idEmpleado", "Nombre ", "Apellido paterno", "Apellido materno", "Email", "Salario", "Comision", "Activo", "idSucursal"
+                "idEmpleado", "Nombre ", "Apellido paterno", "Apellido materno", "Email", "Salario", "Activo", "idSucursal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Boolean.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Boolean.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -137,9 +166,19 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-        VistaEmpleadosVer vistaEmpleadosVer = new VistaEmpleadosVer();
-        vistaEmpleadosVer.setVisible(true);
-        dispose();
+        int selectedRow = tblEmpleados.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idEmpleado = (int) tblEmpleados.getValueAt(selectedRow, 0);
+            System.out.println(idEmpleado);
+            VistaEmpleadosVer vistaEmpleadosVer = new VistaEmpleadosVer(idEmpleado);
+            vistaEmpleadosVer.setVisible(true);
+            dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona una sucursal");
+        }
+        
+        
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
