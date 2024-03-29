@@ -4,6 +4,7 @@
  */
 package FrontEnd;
 
+import BackEnd.Utilidades;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -18,6 +19,8 @@ public class VistaAsegurados extends javax.swing.JFrame {
      */
     public VistaAsegurados() {
         initComponents();
+        
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
     }
 
     /**

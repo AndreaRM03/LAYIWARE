@@ -8,6 +8,7 @@ import BackEnd.Empleado;
 import BackEnd.EmpleadoDAO;
 import BackEnd.Sucursal;
 import BackEnd.SucursalDAO;
+import BackEnd.Utilidades;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,6 +25,8 @@ public class VistaEmpleados extends javax.swing.JFrame {
      */
     public VistaEmpleados() {
         initComponents();
+        
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
         
         DefaultTableModel model = (DefaultTableModel) tblEmpleados.getModel();
             

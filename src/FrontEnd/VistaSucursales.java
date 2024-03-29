@@ -6,6 +6,7 @@ package FrontEnd;
 
 import BackEnd.Sucursal;
 import BackEnd.SucursalDAO;
+import BackEnd.Utilidades;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,6 +23,8 @@ public class VistaSucursales extends javax.swing.JFrame {
      */
     public VistaSucursales() {
         initComponents();
+        
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
         
         
             DefaultTableModel model = (DefaultTableModel) tblSucursales.getModel();
