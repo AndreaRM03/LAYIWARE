@@ -6,6 +6,7 @@ package FrontEnd;
 
 import BackEnd.Sucursal;
 import BackEnd.SucursalDAO;
+import BackEnd.Utilidades;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -46,6 +47,8 @@ public class VistaSucursalesActualizar extends javax.swing.JFrame {
     public VistaSucursalesActualizar(int idSucursal) {
         this.idSucursal = idSucursal;
         initComponents();
+        
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
         
         SucursalDAO sucursalDAO = new SucursalDAO();
         Sucursal sucursal = sucursalDAO.obtenerSucursalPorId(idSucursal);

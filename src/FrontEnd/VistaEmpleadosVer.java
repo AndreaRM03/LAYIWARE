@@ -8,6 +8,7 @@ import BackEnd.Empleado;
 import BackEnd.EmpleadoDAO;
 import BackEnd.Sucursal;
 import BackEnd.SucursalDAO;
+import BackEnd.Utilidades;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
@@ -27,10 +28,13 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
     
     public VistaEmpleadosVer(){
         initComponents();
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
     }
     
     public VistaEmpleadosVer(int idEmpleado) {
         initComponents();
+        
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
         
         EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         Empleado empleado = empleadoDAO.obtenerEmpleado(idEmpleado);

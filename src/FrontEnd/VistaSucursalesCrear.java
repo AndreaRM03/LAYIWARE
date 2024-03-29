@@ -6,7 +6,10 @@ package FrontEnd;
 
 import BackEnd.Sucursal;
 import BackEnd.SucursalDAO;
+import BackEnd.Utilidades;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.ArrayList;
@@ -30,6 +33,8 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
     public VistaSucursalesCrear() {
         initComponents();
         
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
+        
         List<JTextField> campos;
         campos = new ArrayList<>();
         
@@ -39,8 +44,8 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         campos.add(txtfCP);
         campos.add(txtfColonia);
         campos.add(txtfMunicipio);
-        campos.add(txtfEstado);
-        campos.add(txtfPais);
+        //campos.add(txtfEstado);
+        //campos.add(txtfPais);
         campos.add(txtfTelefono1);
 
         // Agregar oyente de foco a cada JTextField
@@ -53,9 +58,24 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
                 @Override
                 public void focusGained(FocusEvent e) {
                     campo.setForeground(Color.BLACK);
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setText("");
+                    }
                 }
             });
         }
+        
+        btnLimpiarTodo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                for (JTextField campo : campos) {
+                    campo.setText("");
+                }
+            }
+            
+        });
         
     }
 
@@ -68,6 +88,13 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblCodigoPostal = new javax.swing.JLabel();
+        lblColonia = new javax.swing.JLabel();
+        lblMunicipio = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
+        lblPais = new javax.swing.JLabel();
+        lblCalle = new javax.swing.JLabel();
+        lblNumero = new javax.swing.JLabel();
         lblNombreSucursal = new javax.swing.JLabel();
         lblDireccion = new javax.swing.JLabel();
         txtfNombreSucursal = new javax.swing.JTextField();
@@ -83,12 +110,55 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         txtfCP = new javax.swing.JTextField();
         txtfCalle = new javax.swing.JTextField();
+        btnLimpiarTodo = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista Sucursales Crear");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
+
+        lblCodigoPostal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblCodigoPostal.setText("Codigo postal");
+        lblCodigoPostal.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblCodigoPostal);
+        lblCodigoPostal.setBounds(340, 260, 160, 40);
+
+        lblColonia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblColonia.setText("Colonia");
+        lblColonia.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblColonia);
+        lblColonia.setBounds(640, 260, 130, 40);
+
+        lblMunicipio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblMunicipio.setText("Municipio");
+        lblMunicipio.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblMunicipio);
+        lblMunicipio.setBounds(340, 360, 130, 40);
+
+        lblEstado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblEstado.setText("Estado");
+        lblEstado.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblEstado);
+        lblEstado.setBounds(640, 360, 130, 40);
+
+        lblPais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPais.setText("Pais");
+        lblPais.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblPais);
+        lblPais.setBounds(900, 360, 130, 40);
+
+        lblCalle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblCalle.setText("Calle");
+        lblCalle.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblCalle);
+        lblCalle.setBounds(340, 150, 130, 40);
+
+        lblNumero.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblNumero.setText("No. #");
+        lblNumero.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblNumero);
+        lblNumero.setBounds(940, 150, 130, 40);
 
         lblNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblNombreSucursal.setText("Nombre Sucursal");
@@ -110,39 +180,36 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfNombreSucursal);
-        txtfNombreSucursal.setBounds(400, 80, 350, 40);
+        txtfNombreSucursal.setBounds(400, 80, 490, 40);
 
         txtfColonia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfColonia.setText("Colonia");
         txtfColonia.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfColonia);
-        txtfColonia.setBounds(640, 270, 460, 40);
+        txtfColonia.setBounds(640, 300, 460, 40);
 
         txtfNumero.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfNumero.setText("No.");
         txtfNumero.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfNumero);
         txtfNumero.setBounds(940, 190, 160, 40);
 
         txtfMunicipio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfMunicipio.setText("Municipio");
         txtfMunicipio.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfMunicipio);
-        txtfMunicipio.setBounds(340, 370, 260, 40);
+        txtfMunicipio.setBounds(340, 400, 260, 40);
 
         txtfEstado.setEditable(false);
         txtfEstado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfEstado.setText("Jalisco");
         txtfEstado.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfEstado);
-        txtfEstado.setBounds(640, 370, 220, 40);
+        txtfEstado.setBounds(640, 400, 220, 40);
 
         txtfPais.setEditable(false);
         txtfPais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfPais.setText("México");
         txtfPais.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfPais);
-        txtfPais.setBounds(900, 370, 200, 40);
+        txtfPais.setBounds(900, 400, 200, 40);
 
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTelefono.setText("Teléfono");
@@ -151,7 +218,6 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         lblTelefono.setBounds(190, 480, 120, 40);
 
         txtfTelefono1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfTelefono1.setText("Teléfono 1");
         txtfTelefono1.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfTelefono1);
         txtfTelefono1.setBounds(340, 480, 260, 40);
@@ -178,10 +244,9 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTitulo.setText("Sucursales");
         getContentPane().add(lblTitulo);
-        lblTitulo.setBounds(940, 80, 330, 48);
+        lblTitulo.setBounds(940, 70, 330, 48);
 
         txtfCP.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfCP.setText("CP");
         txtfCP.setPreferredSize(new java.awt.Dimension(300, 100));
         txtfCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,10 +254,9 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfCP);
-        txtfCP.setBounds(340, 270, 260, 40);
+        txtfCP.setBounds(340, 300, 260, 40);
 
         txtfCalle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfCalle.setText("Calle:");
         txtfCalle.setPreferredSize(new java.awt.Dimension(300, 100));
         txtfCalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +265,12 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         });
         getContentPane().add(txtfCalle);
         txtfCalle.setBounds(340, 190, 550, 40);
+
+        btnLimpiarTodo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnLimpiarTodo.setText("Borrar campos");
+        btnLimpiarTodo.setIconTextGap(0);
+        getContentPane().add(btnLimpiarTodo);
+        btnLimpiarTodo.setBounds(900, 480, 200, 40);
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(lblFondo);
@@ -408,10 +478,18 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearSucursal;
+    private javax.swing.JButton btnLimpiarTodo;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel lblCalle;
+    private javax.swing.JLabel lblCodigoPostal;
+    private javax.swing.JLabel lblColonia;
     private javax.swing.JLabel lblDireccion;
+    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblMunicipio;
     private javax.swing.JLabel lblNombreSucursal;
+    private javax.swing.JLabel lblNumero;
+    private javax.swing.JLabel lblPais;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtfCP;

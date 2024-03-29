@@ -8,6 +8,7 @@ import BackEnd.Empleado;
 import BackEnd.EmpleadoDAO;
 import BackEnd.Sucursal;
 import BackEnd.SucursalDAO;
+import BackEnd.Utilidades;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
@@ -26,6 +27,8 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
      */
     public VistaEmpleadosActualizar() {
         initComponents();
+        
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
         
         SucursalDAO sucursalDAO = new SucursalDAO();
         List<Sucursal> sucursales = sucursalDAO.obtenerSucursales();

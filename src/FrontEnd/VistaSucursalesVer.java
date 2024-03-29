@@ -6,6 +6,7 @@ package FrontEnd;
 
 import BackEnd.Sucursal;
 import BackEnd.SucursalDAO;
+import BackEnd.Utilidades;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,11 +21,15 @@ public class VistaSucursalesVer extends javax.swing.JFrame {
      */
     public VistaSucursalesVer() {
         initComponents();
+        
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
     }
 
     
      public VistaSucursalesVer(int idSucursal) {
-        initComponents();  
+        initComponents();
+        
+        Utilidades.cargarLogo(this, "logoLAYIWARE.png");
         
         
         SucursalDAO sucursalDAO = new SucursalDAO();
