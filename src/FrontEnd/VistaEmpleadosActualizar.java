@@ -52,6 +52,9 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
                 }
             });
         
+        cmbIdSucursal.setSelectedIndex(-1);
+        cmbIdSucursal.setSelectedIndex(0);
+        
     }
 
     /**
