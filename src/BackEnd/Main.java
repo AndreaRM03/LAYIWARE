@@ -18,9 +18,17 @@ public class Main {
         Asegurado asegurado3 = new Asegurado(1, "Michicito3", "Gomez", "Magdaleno", "A12345678912", "B1234567890", "3312345678");
         Asegurado asegurado4 = new Asegurado(1, "Michicito4", "Gomez", "Magdaleno", "A12345678912", "B1234567890", "3312345678");
         
+        Seguro seguro1 = new Seguro(1, 1000, "F123456789", "2024-03-31", "2024-03-01", "3311254521", "vida");
+        Seguro seguro2 = new Seguro(1, 2000, "F123456790", "2024-03-31", "2024-03-01", "3311254521", "vida");
+        Seguro seguro3 = new Seguro(1, 3000, "F123456791", "2024-03-31", "2024-03-01", "3311254521", "vida");
+        Seguro seguro4 = new Seguro(1, 4000, "F123456792", "2024-03-31", "2024-03-01", "3311254521", "vida");
+        Seguro seguro5 = new Seguro(1, 5000, "F123456793", "2024-03-31", "2024-03-01", "3311254521", "vida");
+        
+        
         SucursalDAO sucursalDAO = new SucursalDAO();
         EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         AseguradoDAO aseguradoDAO = new AseguradoDAO();
+        SeguroDAO seguroDAO = new SeguroDAO();
         
 
         try {
@@ -52,6 +60,17 @@ public class Main {
             //aseguradoDAO.actualizarAsegurado(asegurado5, 2);
             
             //aseguradoDAO.borrarAsegurado(4);
+            
+            //seguroDAO.insertarSeguro(seguro1);
+            //seguroDAO.insertarSeguro(seguro2);
+            //seguroDAO.insertarSeguro(seguro3);
+            //seguroDAO.insertarSeguro(seguro4);
+            //seguroDAO.insertarSeguro(seguro5);
+            
+            //Seguro seguro6 = new Seguro(1, 5000, "F123456793", "2024-03-31", "2024-03-01", "3311254521", "vida");
+            //seguroDAO.actualizarSeguro(seguro6, 2);
+            
+            //seguroDAO.eliminarSeguro(4);
 
         } catch (Exception e) {
             e.printStackTrace();
