@@ -4,8 +4,16 @@
  */
 package FrontEnd;
 
+import BackEnd.Empleado;
+import BackEnd.EmpleadoDAO;
+import BackEnd.Sucursal;
+import BackEnd.SucursalDAO;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
 
 /**
  *
@@ -16,8 +24,27 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
     /**
      * Creates new form SucursalesVistaAdmin
      */
-    public VistaEmpleadosVer() {
+    
+    public VistaEmpleadosVer(){
         initComponents();
+    }
+    
+    public VistaEmpleadosVer(int idEmpleado) {
+        initComponents();
+        
+        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+        Empleado empleado = empleadoDAO.obtenerEmpleado(idEmpleado);
+        
+        
+        cmbIdSucursal.setSelectedItem(empleado.getIdSucursal());
+        txtfNombre.setText(empleado.getNombre());
+        txtfApellidoPaterno.setText(empleado.getApellidoPaterno());
+        txtfApellidoMaterno.setText(empleado.getApellidoMaterno());
+        txtfEmail.setText(empleado.getEmail());
+        txtpPassword.setText(empleado.getContrasena());
+        txtfSalario.setText(String.valueOf(empleado.getSalario()));
+        txtfTelefono.setText(empleado.getTelefono());
+        
     }
 
     /**
@@ -29,11 +56,12 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNombreSucursal = new javax.swing.JLabel();
-        lblComision = new javax.swing.JLabel();
+        lblidSucursal = new javax.swing.JLabel();
+        txtfTelefono = new javax.swing.JTextField();
+        lblTelefono = new javax.swing.JLabel();
+        txtfNombreSucursal = new javax.swing.JTextField();
         txtfNombre = new javax.swing.JTextField();
-        txtfIdEmpleado = new javax.swing.JTextField();
-        txtfComision = new javax.swing.JTextField();
+        btnCrearEmpleados = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         txtfSalario = new javax.swing.JTextField();
@@ -47,28 +75,47 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtpPassword = new javax.swing.JPasswordField();
-        lblidSucursal = new javax.swing.JLabel();
         cmbIdSucursal = new javax.swing.JComboBox<>();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Empleados Ver");
+        setTitle("Vista Empleados Crear");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        lblNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblNombreSucursal.setText("Id Empleado");
-        lblNombreSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(lblNombreSucursal);
-        lblNombreSucursal.setBounds(210, 220, 240, 60);
+        lblidSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblidSucursal.setText("Id Sucursal");
+        lblidSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblidSucursal);
+        lblidSucursal.setBounds(190, 140, 140, 60);
 
-        lblComision.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblComision.setText("Comisión");
-        lblComision.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(lblComision);
-        lblComision.setBounds(720, 520, 190, 40);
+        txtfTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfTelefono.setPreferredSize(new java.awt.Dimension(300, 100));
+        txtfTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfTelefonoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtfTelefono);
+        txtfTelefono.setBounds(700, 480, 410, 40);
 
-        txtfNombre.setEditable(false);
+        lblTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTelefono.setText("Teléfono");
+        lblTelefono.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblTelefono);
+        lblTelefono.setBounds(700, 440, 190, 40);
+
+        txtfNombreSucursal.setEditable(false);
+        txtfNombreSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfNombreSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
+        txtfNombreSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfNombreSucursalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtfNombreSucursal);
+        txtfNombreSucursal.setBounds(320, 190, 280, 40);
+
         txtfNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfNombre.setPreferredSize(new java.awt.Dimension(300, 100));
         txtfNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -77,24 +124,17 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfNombre);
-        txtfNombre.setBounds(720, 270, 410, 40);
+        txtfNombre.setBounds(700, 190, 410, 40);
 
-        txtfIdEmpleado.setEditable(false);
-        txtfIdEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfIdEmpleado.setPreferredSize(new java.awt.Dimension(300, 100));
-        txtfIdEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearEmpleados.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
+        btnCrearEmpleados.setText("Crear Empleado");
+        btnCrearEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfIdEmpleadoActionPerformed(evt);
+                btnCrearEmpleadosActionPerformed(evt);
             }
         });
-        getContentPane().add(txtfIdEmpleado);
-        txtfIdEmpleado.setBounds(210, 270, 410, 40);
-
-        txtfComision.setEditable(false);
-        txtfComision.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfComision.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(txtfComision);
-        txtfComision.setBounds(720, 560, 410, 40);
+        getContentPane().add(btnCrearEmpleados);
+        btnCrearEmpleados.setBounds(460, 570, 370, 60);
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Regresar.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +150,6 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(940, 80, 330, 48);
 
-        txtfSalario.setEditable(false);
         txtfSalario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfSalario.setPreferredSize(new java.awt.Dimension(300, 100));
         txtfSalario.addActionListener(new java.awt.event.ActionListener() {
@@ -119,39 +158,37 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfSalario);
-        txtfSalario.setBounds(210, 560, 410, 40);
+        txtfSalario.setBounds(190, 480, 410, 40);
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblNombre.setText("Nombre");
         lblNombre.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(720, 230, 130, 40);
+        lblNombre.setBounds(700, 150, 130, 40);
 
         lblSalario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblSalario.setText("Salario");
         lblSalario.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(lblSalario);
-        lblSalario.setBounds(210, 520, 190, 40);
+        lblSalario.setBounds(190, 440, 190, 40);
 
         lblApellidoPaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblApellidoPaterno.setText("Apellido Paterno");
         lblApellidoPaterno.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(lblApellidoPaterno);
-        lblApellidoPaterno.setBounds(210, 330, 190, 40);
+        lblApellidoPaterno.setBounds(190, 250, 190, 40);
 
         lblApellidoMaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblApellidoMaterno.setText("Apellido Materno");
         lblApellidoMaterno.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(lblApellidoMaterno);
-        lblApellidoMaterno.setBounds(720, 330, 190, 40);
+        lblApellidoMaterno.setBounds(700, 250, 190, 40);
 
-        txtfApellidoMaterno.setEditable(false);
         txtfApellidoMaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfApellidoMaterno);
-        txtfApellidoMaterno.setBounds(720, 370, 410, 40);
+        txtfApellidoMaterno.setBounds(700, 290, 410, 40);
 
-        txtfApellidoPaterno.setEditable(false);
         txtfApellidoPaterno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfApellidoPaterno.setPreferredSize(new java.awt.Dimension(300, 100));
         txtfApellidoPaterno.addActionListener(new java.awt.event.ActionListener() {
@@ -160,9 +197,8 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfApellidoPaterno);
-        txtfApellidoPaterno.setBounds(210, 370, 410, 40);
+        txtfApellidoPaterno.setBounds(190, 290, 410, 40);
 
-        txtfEmail.setEditable(false);
         txtfEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfEmail.setPreferredSize(new java.awt.Dimension(300, 100));
         txtfEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -171,35 +207,29 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfEmail);
-        txtfEmail.setBounds(210, 460, 410, 40);
+        txtfEmail.setBounds(190, 380, 410, 40);
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblEmail.setText("Email");
         lblEmail.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(lblEmail);
-        lblEmail.setBounds(210, 420, 190, 40);
+        lblEmail.setBounds(190, 340, 190, 40);
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblPassword.setText("Contraseña");
         lblPassword.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(720, 420, 190, 40);
+        lblPassword.setBounds(700, 340, 190, 40);
 
-        txtpPassword.setEditable(false);
         txtpPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtpPassword.setText("jPasswordField1");
         getContentPane().add(txtpPassword);
-        txtpPassword.setBounds(720, 460, 410, 40);
+        txtpPassword.setBounds(700, 380, 410, 40);
 
-        lblidSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblidSucursal.setText("Id Sucursal");
-        lblidSucursal.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(lblidSucursal);
-        lblidSucursal.setBounds(210, 120, 140, 60);
-
+        cmbIdSucursal.setEditable(true);
         cmbIdSucursal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         getContentPane().add(cmbIdSucursal);
-        cmbIdSucursal.setBounds(210, 180, 410, 40);
+        cmbIdSucursal.setBounds(190, 190, 110, 40);
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(lblFondo);
@@ -213,9 +243,63 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfNombreActionPerformed
 
-    private void txtfIdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfIdEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfIdEmpleadoActionPerformed
+    private void btnCrearEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEmpleadosActionPerformed
+       int idSucursal= Integer.valueOf((String) cmbIdSucursal.getSelectedItem());
+       System.out.println(idSucursal);
+       String nombre = txtfNombre.getText();
+       System.out.println(nombre);
+       String apellidoPaterno = txtfApellidoPaterno.getText();
+       System.out.println(apellidoPaterno);
+       String apellidoMaterno = txtfApellidoMaterno.getText();
+       System.out.println(apellidoMaterno);
+       String email = txtfEmail.getText();
+       System.out.println(email);
+       String password = String.valueOf(txtpPassword.getPassword());
+       System.out.println(password);
+       double salario = Double.valueOf(txtfSalario.getText());
+       System.out.println(salario);
+       String telefono = txtfTelefono.getText();
+       System.out.println(telefono);
+       
+        
+        int result = JOptionPane.showConfirmDialog(
+                new JFrame(),
+                "¿Estas seguro de crear este empleado?", 
+                "Aseguradora - confirmación",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+            );
+
+        if(result == JOptionPane.YES_OPTION){
+            System.out.println(1);
+            Empleado empleado = new Empleado(idSucursal, nombre, apellidoPaterno, apellidoMaterno, email, password, salario, true, telefono);
+            EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+
+
+            try {
+                // Ejemplo de inserción de una nuevo empleado
+
+                empleadoDAO.insertarEmpleado(empleado);
+                System.out.println("El empleado fue creado exitosamente.");
+                JOptionPane.showMessageDialog(null, "El empleado fue creado exitosamente.", "Aseguradora", JOptionPane.INFORMATION_MESSAGE);
+                VistaEmpleados vistaEmpleados = new VistaEmpleados();
+                vistaEmpleados.setVisible(true);
+                dispose();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Ocurrió un error al intentar crear al empleado " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Ocurrió un error al intentar crear al empleado ", "Aseguradora", JOptionPane.ERROR_MESSAGE);
+            }
+           
+        }else if (result == JOptionPane.NO_OPTION){
+            System.out.println(2);
+           
+        }else {
+            System.out.println(3);
+        }
+        
+    }//GEN-LAST:event_btnCrearEmpleadosActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         VistaEmpleados vistaEmpleados = new VistaEmpleados();
@@ -234,6 +318,14 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
     private void txtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfEmailActionPerformed
+
+    private void txtfNombreSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfNombreSucursalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfNombreSucursalActionPerformed
+
+    private void txtfTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfTelefonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,26 +394,26 @@ public class VistaEmpleadosVer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrearEmpleados;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cmbIdSucursal;
     private javax.swing.JLabel lblApellidoMaterno;
     private javax.swing.JLabel lblApellidoPaterno;
-    private javax.swing.JLabel lblComision;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblNombreSucursal;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSalario;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblidSucursal;
     private javax.swing.JTextField txtfApellidoMaterno;
     private javax.swing.JTextField txtfApellidoPaterno;
-    private javax.swing.JTextField txtfComision;
     private javax.swing.JTextField txtfEmail;
-    private javax.swing.JTextField txtfIdEmpleado;
     private javax.swing.JTextField txtfNombre;
+    private javax.swing.JTextField txtfNombreSucursal;
     private javax.swing.JTextField txtfSalario;
+    private javax.swing.JTextField txtfTelefono;
     private javax.swing.JPasswordField txtpPassword;
     // End of variables declaration//GEN-END:variables
 }
