@@ -94,7 +94,7 @@ public class AseguradoDAO {
     }
 
     // Método para obtener todos los asegurados
-    public List<Asegurado> obtenerTodosAsegurados() {
+    public List<Asegurado> obtenerAsegurados() {
         List<Asegurado> asegurados = new ArrayList<>();
         try (Connection conn = getConnection();
              PreparedStatement statement = conn.prepareStatement(OBTENER_TODOS_ASEGURADOS);
