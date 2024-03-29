@@ -38,6 +38,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
             cmbIdSucursal.addItem(String.valueOf(sucursal.getIdSucursal()));
         }
         
+        
         cmbIdSucursal.addItemListener(new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
@@ -52,6 +53,8 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
                 }
             });
         
+        cmbIdSucursal.setSelectedIndex(-1);
+        cmbIdSucursal.setSelectedIndex(0);
     }
 
     /**
