@@ -29,6 +29,7 @@ public class VistaAseguradosActualizar extends javax.swing.JFrame {
     
     //Atributos
     private int idAsegurado;
+    private int idSucursal;
 
     public int getIdAsegurado() {
         return idAsegurado;
@@ -36,6 +37,14 @@ public class VistaAseguradosActualizar extends javax.swing.JFrame {
 
     public void setIdAsegurado(int idAsegurado) {
         this.idAsegurado = idAsegurado;
+    }
+    
+    public int getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(int idSucursal) {
+        this.idSucursal = idSucursal;
     }
     
     public VistaAseguradosActualizar(){
@@ -60,6 +69,8 @@ public class VistaAseguradosActualizar extends javax.swing.JFrame {
         
         AseguradoDAO aseguradoDAO = new AseguradoDAO();
         Asegurado asegurado = aseguradoDAO.obtenerAseguradoPorId(idAsegurado);
+        
+        this.idSucursal = asegurado.getIdSucursal();
         
         cmbIdSucursal.setSelectedItem(asegurado.getIdSucursal());
         txtfNombre.setText(asegurado.getNombre());
@@ -280,7 +291,14 @@ public class VistaAseguradosActualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfApellidoMaternoActionPerformed
 
     private void btnActualizarAseguradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAseguradoActionPerformed
-        int idSucursal= Integer.valueOf((String) cmbIdSucursal.getSelectedItem());
+        int idSucursal;
+        try {
+            idSucursal= Integer.parseInt((String) cmbIdSucursal.getSelectedItem());
+        } catch (Exception e) {
+            idSucursal= this.getIdSucursal();
+        }
+        System.out.println(idSucursal);
+        
         String nombre = txtfNombre.getText();
         String apellidoPaterno = txtfApellidoPaterno.getText();
         String apellidoMaterno = txtfApellidoMaterno.getText();
