@@ -247,7 +247,10 @@ public class VistaAseguradosCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfApellidoMaternoActionPerformed
 
     private void btnCrearAseguradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAseguradoActionPerformed
-        int idSucursal = cmbIdSucursal.getSelectedIndex();
+        //int idSucursal = cmbIdSucursal.getSelectedIndex();
+        
+        int idSucursal= Integer.valueOf((String) cmbIdSucursal.getSelectedItem());
+        System.out.println(idSucursal);
         String nombre = txtfNombre.getText();
         String apellidoPaterno = txtfApellidoPaterno.getText();
         String apellidoMaterno = txtfApellidoMaterno.getText();
