@@ -4,9 +4,15 @@
  */
 package FrontEnd;
 
+import BackEnd.Asegurado;
+import BackEnd.AseguradoDAO;
+import BackEnd.Empleado;
+import BackEnd.EmpleadoDAO;
 import BackEnd.Utilidades;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +27,30 @@ public class VistaAsegurados extends javax.swing.JFrame {
         initComponents();
         
         Utilidades.cargarLogo(this, "logoLAYIWARE.png");
+        
+        DefaultTableModel model = (DefaultTableModel) tblAsegurados.getModel();
+            
+            AseguradoDAO aseguradoDAO = new AseguradoDAO();
+            
+            // Obtener todos los productos
+            List<Asegurado> asegurados = aseguradoDAO.obtenerAsegurados();
+            
+            System.out.println("Todos los empleados:");
+            for (Asegurado asegurado : asegurados) {
+                
+                model.addRow(new Object[]{
+                    asegurado.getIdAsegurado(),
+                    asegurado.getIdSucursal(),
+                    asegurado.getNombre(),
+                    asegurado.getApellidoPaterno(),
+                    asegurado.getApellidoMaterno(),
+                    asegurado.getRFC(),
+                    asegurado.getCURP(),
+                    asegurado.getTelefono()
+
+                });
+            }
+            
     }
 
     /**
@@ -134,15 +164,34 @@ public class VistaAsegurados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        VistaAseguradosActualizar vistaAseguradosActualizar = new VistaAseguradosActualizar();
-        vistaAseguradosActualizar.setVisible(true);
-        dispose();
+        int selectedRow = tblAsegurados.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idAsegurado = (int) tblAsegurados.getValueAt(selectedRow, 0);
+            System.out.println(idAsegurado);
+            VistaAseguradosActualizar vistaAseguradosActualizar = new VistaAseguradosActualizar(idAsegurado);
+            vistaAseguradosActualizar.setVisible(true);
+            dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un asegurado");
+        }
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-        VistaAseguradosVer vistaAseguradosVer = new VistaAseguradosVer();
-        vistaAseguradosVer.setVisible(true);
-        dispose();
+        int selectedRow = tblAsegurados.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idAsegurado = (int) tblAsegurados.getValueAt(selectedRow, 0);
+            System.out.println(idAsegurado);
+            VistaAseguradosVer vistaAseguradosVer = new VistaAseguradosVer(idAsegurado);
+            vistaAseguradosVer.setVisible(true);
+            dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un asegurado");
+        }
+        
+        
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
@@ -158,9 +207,15 @@ public class VistaAsegurados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar2ActionPerformed
-        int result = JOptionPane.showConfirmDialog(
+        int selectedRow = tblAsegurados.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idAsegurado = (int) tblAsegurados.getValueAt(selectedRow, 0);
+            System.out.println(idAsegurado);
+            
+            int result = JOptionPane.showConfirmDialog(
                 new JFrame(),
-                "¿Estas seguro de querer borrar este Asegurado?", 
+                "¿Estas seguro de querer borrar este asegurado?", 
                 "Aseguradora",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE
@@ -168,11 +223,25 @@ public class VistaAsegurados extends javax.swing.JFrame {
 
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
+                AseguradoDAO aseguradoDAO = new AseguradoDAO();
+                int id = aseguradoDAO.borrarAsegurado(idAsegurado);
+                if(id != 0){
+                    JOptionPane.showMessageDialog(null, "El asegurado fue eliminado exitosamente.", "Aseguradora", JOptionPane.INFORMATION_MESSAGE);
+                    VistaAsegurados vistaAsegurados = new VistaAsegurados();
+                    vistaAsegurados.setVisible(true);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "El asegurado no se pudo eliminar.", "Aseguradora", JOptionPane.ERROR_MESSAGE);
+                }
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
             }else {
                 System.out.println(3);
-            }
+            } 
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un asegurado");
+        }
+        
     }//GEN-LAST:event_btnBorrar2ActionPerformed
 
     /**
