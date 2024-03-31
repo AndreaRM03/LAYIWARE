@@ -4,9 +4,15 @@
  */
 package FrontEnd;
 
+import BackEnd.Seguro;
+import BackEnd.SeguroDAO;
+import BackEnd.Sucursal;
+import BackEnd.SucursalDAO;
 import BackEnd.Utilidades;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +27,28 @@ public class VistaSeguros extends javax.swing.JFrame {
         initComponents();
         
         Utilidades.cargarLogo(this, "logoLAYIWARE.png");
+        
+        
+            DefaultTableModel model = (DefaultTableModel) tblSeguros.getModel();
+            
+            SeguroDAO seguroDAO = new SeguroDAO();
+            
+            // Obtener todos los productos
+            List<Seguro> seguros = seguroDAO.obtenerSeguros();
+            System.out.println("Todas los seguros:");
+            for (Seguro seguro : seguros) {
+                
+                model.addRow(new Object[]{
+                    seguro.getIdSeguro(),
+                    seguro.getIdAsegurado(),
+                    seguro.getCantidadAsegurada(),
+                    seguro.getFolio(),
+                    seguro.getVigencia(),
+                    seguro.getFechaRecepcion(),
+                    seguro.getTelefono(),
+                    seguro.getTipoSeguro()
+                });
+            }
     }
 
     /**
@@ -33,7 +61,7 @@ public class VistaSeguros extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSucursales = new javax.swing.JTable();
+        tblSeguros = new javax.swing.JTable();
         btnActualizar = new javax.swing.JButton();
         btnVer = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
@@ -47,7 +75,7 @@ public class VistaSeguros extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        tblSucursales.setModel(new javax.swing.table.DefaultTableModel(
+        tblSeguros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -70,7 +98,7 @@ public class VistaSeguros extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblSucursales);
+        jScrollPane1.setViewportView(tblSeguros);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(130, 60, 1130, 610);
@@ -225,7 +253,7 @@ public class VistaSeguros extends javax.swing.JFrame {
     private javax.swing.JButton btnVer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblSucursales;
+    private javax.swing.JTable tblSeguros;
     private javax.swing.JLabel zlblFondo;
     // End of variables declaration//GEN-END:variables
 }
