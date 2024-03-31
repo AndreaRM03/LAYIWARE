@@ -25,6 +25,7 @@ public class Main {
         Seguro seguro5 = new Seguro(1, 5000, "F123456793", "2024-03-31", "2024-03-01", "3311254521", "vida");
         
         
+        
         SucursalDAO sucursalDAO = new SucursalDAO();
         EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         AseguradoDAO aseguradoDAO = new AseguradoDAO();
