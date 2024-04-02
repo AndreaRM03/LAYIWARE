@@ -162,15 +162,40 @@ public class VistaSeguros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        VistaSegurosActualizar vistaSegurosActualizar = new VistaSegurosActualizar();
-        vistaSegurosActualizar.setVisible(true);
-        dispose();
+        int selectedRow = tblSeguros.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idSeguro = (int) tblSeguros.getValueAt(selectedRow, 0);
+            int idAsegurado = (int) tblSeguros.getValueAt(selectedRow, 1);
+            System.out.println(idSeguro);
+            VistaSegurosActualizar vistaSegurosActualizar = new VistaSegurosActualizar(idSeguro, idAsegurado);
+            vistaSegurosActualizar.setVisible(true);
+            dispose();
+            
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un seguro");
+        }
+        
+        
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-        VistaSegurosVer vistaSegurosVer = new VistaSegurosVer();
-        vistaSegurosVer.setVisible(true);
-        dispose();
+        int selectedRow = tblSeguros.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idSeguro = (int) tblSeguros.getValueAt(selectedRow, 0);
+            int idAsegurado = (int) tblSeguros.getValueAt(selectedRow, 1);
+            System.out.println(idSeguro);
+            VistaSegurosVer vistaSegurosVer = new VistaSegurosVer(idSeguro, idAsegurado);
+            vistaSegurosVer.setVisible(true);
+            dispose();
+        
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un seguro");
+        }
+        
+        
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
@@ -186,7 +211,13 @@ public class VistaSeguros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar2ActionPerformed
-        int result = JOptionPane.showConfirmDialog(
+        int selectedRow = tblSeguros.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idSeguro = (int) tblSeguros.getValueAt(selectedRow, 0);
+            System.out.println(idSeguro);
+            
+            int result = JOptionPane.showConfirmDialog(
                 new JFrame(),
                 "¿Estas seguro de querer borrar este seguro?", 
                 "Aseguradora",
@@ -196,11 +227,25 @@ public class VistaSeguros extends javax.swing.JFrame {
 
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
+                SeguroDAO seguroDAO = new SeguroDAO();
+                int id = seguroDAO.eliminarSeguro(idSeguro);
+                if(id != 0){
+                    JOptionPane.showMessageDialog(null, "El seguro fue eliminado exitosamente.", "Aseguradora", JOptionPane.INFORMATION_MESSAGE);
+                    VistaSeguros vistaSeguros = new VistaSeguros();
+                    vistaSeguros.setVisible(true);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "El seguro no se pudo eliminar.", "Aseguradora", JOptionPane.ERROR_MESSAGE);
+                }
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
             }else {
                 System.out.println(3);
-            }
+            } 
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un seguro");
+        }
+        
     }//GEN-LAST:event_btnBorrar2ActionPerformed
 
     /**

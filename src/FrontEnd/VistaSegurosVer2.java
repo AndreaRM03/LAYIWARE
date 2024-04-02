@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author red-p
  */
-public class VistaSegurosCrear2 extends javax.swing.JFrame {
+public class VistaSegurosVer2 extends javax.swing.JFrame {
 
     /**
      * Creates new form SucursalesVistaAdmin
      */
-    public VistaSegurosCrear2() {
+    public VistaSegurosVer2() {
         initComponents();
         
         Utilidades.cargarLogo(this, "logoLAYIWARE.png");
@@ -39,14 +39,13 @@ public class VistaSegurosCrear2 extends javax.swing.JFrame {
         txtfFechaRecepcion = new javax.swing.JTextField();
         txtfFolio = new javax.swing.JTextField();
         txtfTelefono = new javax.swing.JTextField();
-        btnCrearSeguro = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         cmbTipoSeguro = new javax.swing.JComboBox<>();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Seguros Crear");
+        setTitle("Vista Seguros Ver");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
@@ -56,6 +55,7 @@ public class VistaSegurosCrear2 extends javax.swing.JFrame {
         getContentPane().add(lblidAsegurado);
         lblidAsegurado.setBounds(340, 150, 150, 60);
 
+        txtfCantidadAsegurada.setEditable(false);
         txtfCantidadAsegurada.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfCantidadAsegurada.setText("Cantidad asegurada");
         txtfCantidadAsegurada.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -77,6 +77,7 @@ public class VistaSegurosCrear2 extends javax.swing.JFrame {
         getContentPane().add(cmbIdAsegurado);
         cmbIdAsegurado.setBounds(500, 160, 190, 40);
 
+        txtfVigencia.setEditable(false);
         txtfVigencia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfVigencia.setText("Vigencia");
         txtfVigencia.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -88,33 +89,26 @@ public class VistaSegurosCrear2 extends javax.swing.JFrame {
         getContentPane().add(txtfVigencia);
         txtfVigencia.setBounds(340, 360, 350, 40);
 
+        txtfFechaRecepcion.setEditable(false);
         txtfFechaRecepcion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfFechaRecepcion.setText("Fecha recepción");
         txtfFechaRecepcion.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfFechaRecepcion);
         txtfFechaRecepcion.setBounds(730, 360, 350, 40);
 
+        txtfFolio.setEditable(false);
         txtfFolio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfFolio.setText("Folio");
         txtfFolio.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfFolio);
         txtfFolio.setBounds(730, 260, 350, 40);
 
+        txtfTelefono.setEditable(false);
         txtfTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfTelefono.setText("Teléfono");
         txtfTelefono.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfTelefono);
         txtfTelefono.setBounds(340, 460, 350, 40);
-
-        btnCrearSeguro.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
-        btnCrearSeguro.setText("Crear Seguro");
-        btnCrearSeguro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearSeguroActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCrearSeguro);
-        btnCrearSeguro.setBounds(510, 570, 370, 60);
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Regresar.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -161,46 +155,6 @@ public class VistaSegurosCrear2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfVigenciaActionPerformed
 
-    private void btnCrearSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearSeguroActionPerformed
-        
-        
-        int idAsegurado = cmbIdAsegurado.getSelectedIndex();
-        double cantidadAsegurada = Double.parseDouble(txtfCantidadAsegurada.getText());
-        String folio = txtfFolio.getText();
-        String vigencia = txtfVigencia.getText();
-        String fechaRecepcion = txtfFechaRecepcion.getText();
-        String telefono = txtfTelefono.getText();
-        String tipoSeguro = (String) cmbTipoSeguro.getSelectedItem();
-        
-        
-        System.out.println(idAsegurado);
-        System.out.println(cantidadAsegurada);
-        System.out.println(folio);
-        System.out.println(vigencia);
-        System.out.println(fechaRecepcion);
-        System.out.println(telefono);
-        System.out.println(tipoSeguro);
-
-        
-        int result = JOptionPane.showConfirmDialog(
-                new JFrame(),
-                "¿Estas seguro de crear esta sucursal?", 
-                "Aseguradora - confirmación",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE
-            );
-
-        if(result == JOptionPane.YES_OPTION){
-            System.out.println(1);
-           
-        }else if (result == JOptionPane.NO_OPTION){
-            System.out.println(2);
-           
-        }else {
-            System.out.println(3);
-        }
-    }//GEN-LAST:event_btnCrearSeguroActionPerformed
-
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         VistaSeguros vistaSeguros = new VistaSeguros();
         vistaSeguros.setVisible(true);
@@ -228,14 +182,46 @@ public class VistaSegurosCrear2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaSegurosCrear2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaSegurosVer2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaSegurosCrear2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaSegurosVer2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaSegurosCrear2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaSegurosVer2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaSegurosCrear2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaSegurosVer2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -272,13 +258,12 @@ public class VistaSegurosCrear2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaSegurosCrear2().setVisible(true);
+                new VistaSegurosVer2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCrearSeguro;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cmbIdAsegurado;
     private javax.swing.JComboBox<String> cmbTipoSeguro;
