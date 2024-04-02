@@ -95,13 +95,15 @@ public class SeguroDAO {
         }
     }
 
-    public void eliminarSeguro(int idSeguro) {
+    public int eliminarSeguro(int idSeguro) {
         try (Connection conn = getConnection();
              PreparedStatement statement = conn.prepareStatement(ELIMINAR_SEGURO)) {
             statement.setInt(1, idSeguro);
             statement.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
+            return 0;
         }
     }
 

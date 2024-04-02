@@ -4,9 +4,21 @@
  */
 package FrontEnd;
 
+import BackEnd.Asegurado;
+import BackEnd.AseguradoDAO;
+import BackEnd.Empleado;
+import BackEnd.EmpleadoDAO;
+import BackEnd.Seguro;
+import BackEnd.SeguroDAO;
+import BackEnd.Sucursal;
+import BackEnd.SucursalDAO;
 import BackEnd.Utilidades;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
 
 /**
  *
@@ -17,10 +29,82 @@ public class VistaSegurosVer extends javax.swing.JFrame {
     /**
      * Creates new form SucursalesVistaAdmin
      */
-    public VistaSegurosVer() {
+    
+    //Atributos
+    private int idSeguro;
+    private int idAsegurado;
+    
+    
+    public int getIdAsegurado() {
+        return idAsegurado;
+    }
+
+    public void setIdAsegurado(int idAsegurado) {
+        this.idAsegurado = idAsegurado;
+    }
+
+    public int getIdSeguro() {
+        return idSeguro;
+    }
+
+    public void setIdSeguro(int idSeguro) {
+        this.idSeguro = idSeguro;
+    }
+    
+    
+    public VistaSegurosVer(){
         initComponents();
+    }
+    
+  
+    public VistaSegurosVer(int idSeguro, int idAsegurado) {
+        initComponents();
+        this.idSeguro = idSeguro;
+        this.idAsegurado = idAsegurado;
         
         Utilidades.cargarLogo(this, "logoLAYIWARE.png");
+        
+        AseguradoDAO aseguradoDAO = new AseguradoDAO();
+        List<Asegurado> asegurados = aseguradoDAO.obtenerAsegurados();
+        System.out.println(asegurados);
+        
+        for(Asegurado asegurado : asegurados){
+            cmbIdAsegurado.addItem(String.valueOf(asegurado.getIdAsegurado()));
+        }
+        
+        
+        Asegurado asegurado = aseguradoDAO.obtenerAseguradoPorId(idAsegurado);
+        
+        cmbIdAsegurado.setSelectedItem(this.getIdAsegurado());
+        txtfNombreAsegurado.setText(asegurado.getNombre() + " " + asegurado.getApellidoPaterno() + " " + asegurado.getApellidoMaterno());
+        
+        
+        SeguroDAO seguroDAO = new SeguroDAO();
+        Seguro seguro = seguroDAO.obtenerSeguroPorId(idSeguro);
+        
+        txtfCantidadAsegurada.setText(String.valueOf(seguro.getCantidadAsegurada()));
+        txtfFolio.setText(seguro.getFolio());
+        txtfVigencia.setText(seguro.getFolio());
+        txtfFechaRecepcion.setText(seguro.getFechaRecepcion());
+        txtfTelefono.setText(seguro.getTelefono());
+        cmbTipoSeguro.setSelectedItem(seguro.getTipoSeguro());
+        
+        
+        
+        cmbIdAsegurado.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+
+                        String id = (String) cmbIdAsegurado.getSelectedItem();
+                        System.out.println(id);
+                        Asegurado asegurado = aseguradoDAO.obtenerAseguradoPorId(Integer.valueOf(id));
+                        txtfNombreAsegurado.setText(asegurado.getNombre() +  " " + asegurado.getApellidoPaterno() + " " + asegurado.getApellidoMaterno());
+                        
+                    }
+                }
+            });
+        
     }
 
     /**
@@ -32,32 +116,32 @@ public class VistaSegurosVer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblidAsegurado = new javax.swing.JLabel();
         txtfCantidadAsegurada = new javax.swing.JTextField();
         cmbIdAsegurado = new javax.swing.JComboBox<>();
+        txtfNombreAsegurado = new javax.swing.JTextField();
+        txtfFolio = new javax.swing.JTextField();
         txtfVigencia = new javax.swing.JTextField();
         txtfFechaRecepcion = new javax.swing.JTextField();
-        txtfFolio = new javax.swing.JTextField();
         txtfTelefono = new javax.swing.JTextField();
+        cmbTipoSeguro = new javax.swing.JComboBox<>();
+        lblAsegurado = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
-        cmbTipoSeguro = new javax.swing.JComboBox<>();
+        lblTipoSeguro = new javax.swing.JLabel();
+        lblCantidadAsegurada = new javax.swing.JLabel();
+        lblFolio = new javax.swing.JLabel();
+        lblVigencia = new javax.swing.JLabel();
+        lblFechaRecepcion = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Seguros Ver");
+        setTitle("Vista Seguros Actualizar");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        lblidAsegurado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblidAsegurado.setText("Id Asegurado");
-        lblidAsegurado.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(lblidAsegurado);
-        lblidAsegurado.setBounds(340, 150, 150, 60);
-
         txtfCantidadAsegurada.setEditable(false);
         txtfCantidadAsegurada.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfCantidadAsegurada.setText("Cantidad asegurada");
         txtfCantidadAsegurada.setPreferredSize(new java.awt.Dimension(300, 100));
         txtfCantidadAsegurada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,21 +149,32 @@ public class VistaSegurosVer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfCantidadAsegurada);
-        txtfCantidadAsegurada.setBounds(340, 260, 350, 40);
+        txtfCantidadAsegurada.setBounds(280, 280, 350, 40);
 
+        cmbIdAsegurado.setEditable(true);
         cmbIdAsegurado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        cmbIdAsegurado.setPreferredSize(new java.awt.Dimension(300, 100));
-        cmbIdAsegurado.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(cmbIdAsegurado);
+        cmbIdAsegurado.setBounds(440, 180, 190, 40);
+
+        txtfNombreAsegurado.setEditable(false);
+        txtfNombreAsegurado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfNombreAsegurado.setPreferredSize(new java.awt.Dimension(300, 100));
+        txtfNombreAsegurado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbIdAseguradoActionPerformed(evt);
+                txtfNombreAseguradoActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbIdAsegurado);
-        cmbIdAsegurado.setBounds(500, 160, 190, 40);
+        getContentPane().add(txtfNombreAsegurado);
+        txtfNombreAsegurado.setBounds(670, 180, 350, 40);
+
+        txtfFolio.setEditable(false);
+        txtfFolio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtfFolio.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(txtfFolio);
+        txtfFolio.setBounds(670, 280, 350, 40);
 
         txtfVigencia.setEditable(false);
         txtfVigencia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfVigencia.setText("Vigencia");
         txtfVigencia.setPreferredSize(new java.awt.Dimension(300, 100));
         txtfVigencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,28 +182,43 @@ public class VistaSegurosVer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfVigencia);
-        txtfVigencia.setBounds(340, 360, 350, 40);
+        txtfVigencia.setBounds(280, 380, 350, 40);
 
         txtfFechaRecepcion.setEditable(false);
         txtfFechaRecepcion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfFechaRecepcion.setText("Fecha recepción");
         txtfFechaRecepcion.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfFechaRecepcion);
-        txtfFechaRecepcion.setBounds(730, 360, 350, 40);
-
-        txtfFolio.setEditable(false);
-        txtfFolio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfFolio.setText("Folio");
-        txtfFolio.setPreferredSize(new java.awt.Dimension(300, 100));
-        getContentPane().add(txtfFolio);
-        txtfFolio.setBounds(730, 260, 350, 40);
+        txtfFechaRecepcion.setBounds(670, 380, 350, 40);
 
         txtfTelefono.setEditable(false);
         txtfTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfTelefono.setText("Teléfono");
         txtfTelefono.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfTelefono);
-        txtfTelefono.setBounds(340, 460, 350, 40);
+        txtfTelefono.setBounds(280, 480, 350, 40);
+
+        cmbTipoSeguro.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cmbTipoSeguro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automóvil", "Vida", "Desempleo" }));
+        cmbTipoSeguro.setEnabled(false);
+        cmbTipoSeguro.setPreferredSize(new java.awt.Dimension(300, 100));
+        cmbTipoSeguro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoSeguroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmbTipoSeguro);
+        cmbTipoSeguro.setBounds(670, 480, 350, 40);
+
+        lblAsegurado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblAsegurado.setText("Id Asegurado");
+        lblAsegurado.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblAsegurado);
+        lblAsegurado.setBounds(280, 170, 160, 60);
+
+        lblTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTelefono.setText("Teléfono");
+        lblTelefono.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblTelefono);
+        lblTelefono.setBounds(280, 440, 190, 40);
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Regresar.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,36 +234,43 @@ public class VistaSegurosVer extends javax.swing.JFrame {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(940, 80, 330, 48);
 
-        cmbTipoSeguro.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        cmbTipoSeguro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automóvil", "Vida", "Desempleo" }));
-        cmbTipoSeguro.setPreferredSize(new java.awt.Dimension(300, 100));
-        cmbTipoSeguro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbTipoSeguroActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cmbTipoSeguro);
-        cmbTipoSeguro.setBounds(730, 460, 350, 40);
+        lblTipoSeguro.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTipoSeguro.setText("Tipo de Seguro");
+        lblTipoSeguro.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblTipoSeguro);
+        lblTipoSeguro.setBounds(670, 440, 190, 40);
+
+        lblCantidadAsegurada.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblCantidadAsegurada.setText("Cantidad asegurada");
+        lblCantidadAsegurada.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblCantidadAsegurada);
+        lblCantidadAsegurada.setBounds(280, 240, 350, 40);
+
+        lblFolio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblFolio.setText("Folio");
+        lblFolio.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblFolio);
+        lblFolio.setBounds(670, 240, 190, 40);
+
+        lblVigencia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblVigencia.setText("Vigencia");
+        lblVigencia.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblVigencia);
+        lblVigencia.setBounds(280, 340, 190, 40);
+
+        lblFechaRecepcion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblFechaRecepcion.setText("Fecha recepción");
+        lblFechaRecepcion.setPreferredSize(new java.awt.Dimension(300, 100));
+        getContentPane().add(lblFechaRecepcion);
+        lblFechaRecepcion.setBounds(670, 340, 190, 40);
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         getContentPane().add(lblFondo);
-        lblFondo.setBounds(0, -30, 1280, 720);
+        lblFondo.setBounds(0, 0, 1280, 720);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtfCantidadAseguradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCantidadAseguradaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfCantidadAseguradaActionPerformed
-
-    private void cmbIdAseguradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbIdAseguradoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbIdAseguradoActionPerformed
-
-    private void txtfVigenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfVigenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfVigenciaActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         VistaSeguros vistaSeguros = new VistaSeguros();
@@ -161,9 +278,21 @@ public class VistaSegurosVer extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void txtfCantidadAseguradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCantidadAseguradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfCantidadAseguradaActionPerformed
+
+    private void txtfVigenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfVigenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfVigenciaActionPerformed
+
     private void cmbTipoSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoSeguroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTipoSeguroActionPerformed
+
+    private void txtfNombreAseguradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfNombreAseguradoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfNombreAseguradoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +351,102 @@ public class VistaSegurosVer extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -235,12 +460,19 @@ public class VistaSegurosVer extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cmbIdAsegurado;
     private javax.swing.JComboBox<String> cmbTipoSeguro;
+    private javax.swing.JLabel lblAsegurado;
+    private javax.swing.JLabel lblCantidadAsegurada;
+    private javax.swing.JLabel lblFechaRecepcion;
+    private javax.swing.JLabel lblFolio;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblTipoSeguro;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblidAsegurado;
+    private javax.swing.JLabel lblVigencia;
     private javax.swing.JTextField txtfCantidadAsegurada;
     private javax.swing.JTextField txtfFechaRecepcion;
     private javax.swing.JTextField txtfFolio;
+    private javax.swing.JTextField txtfNombreAsegurado;
     private javax.swing.JTextField txtfTelefono;
     private javax.swing.JTextField txtfVigencia;
     // End of variables declaration//GEN-END:variables

@@ -59,6 +59,7 @@ public class VistaSegurosCrear extends javax.swing.JFrame {
         
         cmbIdAsegurado.setSelectedIndex(-1);
         cmbIdAsegurado.setSelectedIndex(0);
+        txtfFolio.setText("F-" + Utilidades.generarFolio());
     }
 
     /**
