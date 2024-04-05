@@ -60,6 +60,12 @@ public class VistaSegurosCrear extends javax.swing.JFrame {
         cmbIdAsegurado.setSelectedIndex(-1);
         cmbIdAsegurado.setSelectedIndex(0);
         txtfFolio.setText("F-" + Utilidades.generarFolio());
+        
+        Utilidades.limitarCaracteres(txtfCantidadAsegurada, 10, "numeros");
+        Utilidades.limitarCaracteres(txtfVigencia, 10, "fecha");
+        Utilidades.limitarCaracteres(txtfFechaRecepcion, 10, "fecha");
+        Utilidades.limitarCaracteres(txtfTelefono, 10, "numeros");
+        
     }
 
     /**
@@ -92,7 +98,7 @@ public class VistaSegurosCrear extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Empleados Crear");
+        setTitle("Vista Seguros Crear");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
@@ -122,6 +128,7 @@ public class VistaSegurosCrear extends javax.swing.JFrame {
         getContentPane().add(txtfNombreAsegurado);
         txtfNombreAsegurado.setBounds(670, 180, 350, 40);
 
+        txtfFolio.setEditable(false);
         txtfFolio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfFolio.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfFolio);

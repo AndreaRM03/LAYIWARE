@@ -100,6 +100,11 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
                 }
             });
         
+        Utilidades.limitarCaracteres(txtfNombre, 20, "letras");
+        Utilidades.limitarCaracteres(txtfApellidoPaterno, 20, "letras");
+        Utilidades.limitarCaracteres(txtfApellidoMaterno, 20, "letras");
+        Utilidades.limitarCaracteres(txtfSalario, 10, "numeros");
+        Utilidades.limitarCaracteres(txtfTelefono, 10, "numeros");
         
     }
 

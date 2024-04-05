@@ -76,7 +76,16 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
             }
             
         });
-        
+       
+        Utilidades.limitarCaracteres(txtfNombreSucursal, 20, "letras");
+        Utilidades.limitarCaracteres(txtfCalle, 20, "letras");
+        Utilidades.limitarCaracteres(txtfNumero, 6, "numeros");
+        Utilidades.limitarCaracteres(txtfCP, 5, "numeros");
+        Utilidades.limitarCaracteres(txtfColonia, 20, "letras");
+        Utilidades.limitarCaracteres(txtfMunicipio, 15, "letras");
+        Utilidades.limitarCaracteres(txtfEstado, 10, "letras");
+        Utilidades.limitarCaracteres(txtfPais, 10, "letras");
+        Utilidades.limitarCaracteres(txtfTelefono1, 10, "numeros");
     }
 
     /**

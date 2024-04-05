@@ -84,7 +84,7 @@ public class VistaSegurosActualizar extends javax.swing.JFrame {
         
         txtfCantidadAsegurada.setText(String.valueOf(seguro.getCantidadAsegurada()));
         txtfFolio.setText(seguro.getFolio());
-        txtfVigencia.setText(seguro.getFolio());
+        txtfVigencia.setText(seguro.getVigencia());
         txtfFechaRecepcion.setText(seguro.getFechaRecepcion());
         txtfTelefono.setText(seguro.getTelefono());
         cmbTipoSeguro.setSelectedItem(seguro.getTipoSeguro());
@@ -107,6 +107,12 @@ public class VistaSegurosActualizar extends javax.swing.JFrame {
         
         //cmbIdAsegurado.setSelectedIndex(-1);
         //cmbIdAsegurado.setSelectedIndex(0);
+        
+        Utilidades.limitarCaracteres(txtfCantidadAsegurada, 10, "numeros");
+        Utilidades.limitarCaracteres(txtfVigencia, 10, "fecha");
+        Utilidades.limitarCaracteres(txtfFechaRecepcion, 10, "fecha");
+        Utilidades.limitarCaracteres(txtfTelefono, 10, "numeros");
+        
     }
 
     /**
@@ -169,6 +175,7 @@ public class VistaSegurosActualizar extends javax.swing.JFrame {
         getContentPane().add(txtfNombreAsegurado);
         txtfNombreAsegurado.setBounds(670, 180, 350, 40);
 
+        txtfFolio.setEditable(false);
         txtfFolio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfFolio.setPreferredSize(new java.awt.Dimension(300, 100));
         getContentPane().add(txtfFolio);
