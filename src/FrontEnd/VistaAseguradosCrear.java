@@ -57,6 +57,13 @@ public class VistaAseguradosCrear extends javax.swing.JFrame {
         cmbIdSucursal.setSelectedIndex(-1);
         cmbIdSucursal.setSelectedIndex(0);
         
+        Utilidades.limitarCaracteres(txtfNombre, 20, "letras");
+        Utilidades.limitarCaracteres(txtfApellidoPaterno, 20, "letras");
+        Utilidades.limitarCaracteres(txtfApellidoMaterno, 20, "letras");
+        Utilidades.limitarCaracteres(txtfRFC, 13, "alfanumerico");
+        Utilidades.limitarCaracteres(txtfCURP, 18, "alfanumerico");
+        Utilidades.limitarCaracteres(txtfTelefono, 10, "numeros");
+        
     }
 
     /**
