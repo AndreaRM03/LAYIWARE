@@ -229,7 +229,7 @@ public class VistaAseguradosCrear extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(940, 80, 330, 48);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\fondo interfaces final (1).jpg")); // NOI18N
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, -30, 1280, 720);
 

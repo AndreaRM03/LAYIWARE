@@ -136,7 +136,7 @@ public class VistaSegurosVer extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Seguros Actualizar");
+        setTitle("Vista Seguros Ver");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
@@ -264,7 +264,7 @@ public class VistaSegurosVer extends javax.swing.JFrame {
         getContentPane().add(lblFechaRecepcion);
         lblFechaRecepcion.setBounds(670, 340, 190, 40);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\fondo interfaces final (1).jpg")); // NOI18N
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 1280, 720);
 

@@ -4,7 +4,11 @@
  */
 package FrontEnd;
 
+import BackEnd.Empleado;
+import BackEnd.EmpleadoDAO;
 import BackEnd.Utilidades;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +23,7 @@ public class VistaLogin extends javax.swing.JFrame {
         initComponents();
         
         Utilidades.cargarLogo(this, "logoLAYIWARE.png");
+        
     }
 
     /**
@@ -30,22 +35,25 @@ public class VistaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblImagenLogin = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         lblContrasena = new javax.swing.JLabel();
         lblEmail1 = new javax.swing.JLabel();
         txtfEmail = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         txtpPassword = new javax.swing.JPasswordField();
         lblFondo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblImagenLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Sucursales Ver");
+        setTitle("Vista Login");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        lblImagenLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagenLogin.png"))); // NOI18N
-        getContentPane().add(lblImagenLogin);
-        lblImagenLogin.setBounds(480, 0, 350, 340);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\Copia_de_LAYIWARE-removebg-preview.png")); // NOI18N
+        jLabel3.setText("jLabel1");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(390, 50, 470, 250);
 
         lblContrasena.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblContrasena.setText("Contraseña");
@@ -74,29 +82,56 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(500, 550, 330, 80);
+        btnLogin.setBounds(490, 550, 330, 80);
 
         txtpPassword.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         txtpPassword.setText("jPasswordField1");
         getContentPane().add(txtpPassword);
-        txtpPassword.setBounds(540, 430, 450, 50);
+        txtpPassword.setBounds(520, 430, 470, 50);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\foto6.png")); // NOI18N
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 1280, 720);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\logo layi seguros.png")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(520, 80, 250, 160);
+
+        lblImagenLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagenLogin.png"))); // NOI18N
+        getContentPane().add(lblImagenLogin);
+        lblImagenLogin.setBounds(460, 20, 350, 340);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        boolean datosCorrectos = false;
         String email = txtfEmail.getText();
         String password = String.valueOf( txtpPassword.getPassword());
         System.out.println(email);
         System.out.println(password);
-        VistaMenu vistaMenu = new VistaMenu();
-        vistaMenu.setVisible(true);
-        dispose();
+        
+        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+        List<Empleado> empleados = empleadoDAO.obtenerEmpleados();
+        for(Empleado empleado : empleados){
+            System.out.println(empleado.getEmail());
+            System.out.println(empleado.getContrasena());
+            
+            if(empleado.getEmail().equalsIgnoreCase(email) &&
+               empleado.getContrasena().equals(password)){
+                datosCorrectos = true;
+                
+            }
+        }
+        
+        if(datosCorrectos){
+            VistaMenu vistaMenu = new VistaMenu();
+            vistaMenu.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Datos incorrectos, intenta nuevamente\n(si olvidaste tu contraseña contacta a soporte)", "Aseguradora", JOptionPane.ERROR_MESSAGE);
+         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmailActionPerformed
@@ -140,6 +175,8 @@ public class VistaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblContrasena;
     private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblFondo;
