@@ -154,9 +154,9 @@ public class VistaEmpleados extends javax.swing.JFrame {
         getContentPane().add(btnBorrar2);
         btnBorrar2.setBounds(20, 420, 90, 90);
 
-        zlblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        zlblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\fondo interfaces final (1).jpg")); // NOI18N
         getContentPane().add(zlblFondo);
-        zlblFondo.setBounds(0, 0, 1280, 720);
+        zlblFondo.setBounds(0, 0, 1273, 720);
 
         pack();
         setLocationRelativeTo(null);
@@ -172,7 +172,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
             vistaEmpleadosActualizar.setVisible(true);
             dispose();
         }else{
-             JOptionPane.showMessageDialog(null, "Por favor selecciona una sucursal");
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un empleado");
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -186,7 +186,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
             vistaEmpleadosVer.setVisible(true);
             dispose();
         }else{
-             JOptionPane.showMessageDialog(null, "Por favor selecciona una sucursal");
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un empleado");
         }
         
         

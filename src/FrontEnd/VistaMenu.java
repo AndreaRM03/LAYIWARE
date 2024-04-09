@@ -41,10 +41,10 @@ public class VistaMenu extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagenLogin.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\Copia_de_LAYIWARE-removebg-preview.png")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(460, 30, 330, 250);
+        jLabel1.setBounds(400, 240, 470, 250);
 
         btnSucursales.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSucursales.setText("Seguros");
@@ -54,7 +54,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSucursales);
-        btnSucursales.setBounds(130, 510, 370, 60);
+        btnSucursales.setBounds(90, 530, 370, 60);
 
         btnSucursales1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSucursales1.setText("Sucursales");
@@ -64,7 +64,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSucursales1);
-        btnSucursales1.setBounds(130, 330, 370, 60);
+        btnSucursales1.setBounds(80, 190, 370, 60);
 
         btnSucursales2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSucursales2.setText("Asegurados");
@@ -74,7 +74,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSucursales2);
-        btnSucursales2.setBounds(780, 510, 370, 60);
+        btnSucursales2.setBounds(830, 530, 370, 60);
 
         btnSucursales3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSucursales3.setText("Empleados");
@@ -84,9 +84,9 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSucursales3);
-        btnSucursales3.setBounds(780, 330, 370, 60);
+        btnSucursales3.setBounds(830, 190, 370, 60);
 
-        zlblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        zlblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\fondo caliz 3f.jpg")); // NOI18N
         getContentPane().add(zlblFondo);
         zlblFondo.setBounds(0, 0, 1280, 720);
 

@@ -281,9 +281,9 @@ public class VistaSucursalesCrear extends javax.swing.JFrame {
         getContentPane().add(btnLimpiarTodo);
         btnLimpiarTodo.setBounds(900, 480, 200, 40);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\fondo interfaces final (1).jpg")); // NOI18N
         getContentPane().add(lblFondo);
-        lblFondo.setBounds(0, -30, 1280, 720);
+        lblFondo.setBounds(0, -30, 1280, 750);
 
         pack();
         setLocationRelativeTo(null);

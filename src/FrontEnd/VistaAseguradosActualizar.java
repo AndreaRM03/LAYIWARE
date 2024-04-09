@@ -136,7 +136,7 @@ public class VistaAseguradosActualizar extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista Asegurados Crear");
+        setTitle("Vista Asegurados Actualizar");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
@@ -267,7 +267,7 @@ public class VistaAseguradosActualizar extends javax.swing.JFrame {
         getContentPane().add(btnActualizarAsegurado);
         btnActualizarAsegurado.setBounds(510, 560, 420, 60);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\fondo interfaces final (1).jpg")); // NOI18N
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, -30, 1280, 720);
 

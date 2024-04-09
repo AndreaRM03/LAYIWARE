@@ -22,7 +22,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author red-p
+ * @author
  */
 public class VistaSegurosCrear extends javax.swing.JFrame {
 
@@ -231,7 +231,7 @@ public class VistaSegurosCrear extends javax.swing.JFrame {
         getContentPane().add(lblFechaRecepcion);
         lblFechaRecepcion.setBounds(670, 340, 190, 40);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\fondo interfaces final (1).jpg")); // NOI18N
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 1280, 720);
 
